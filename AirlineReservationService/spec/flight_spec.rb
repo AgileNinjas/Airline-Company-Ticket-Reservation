@@ -9,7 +9,7 @@ describe "Flight" do
 
     flight.id.should > 0
 
-    flight.id.kind_of?(Integer).should == true
+    flight.id.should be_a_kind_of(Integer)
 
   end
 
@@ -17,10 +17,9 @@ describe "Flight" do
 
     flight = Flight.new
 
-    flight.capacity.should >= 20
-    flight.capacity.should <= 400
+    flight.capacity.
 
-    flight.capacity.kind_of?(Integer).should == true
+    flight.capacity.should be_a_kind_of(Integer)
 
   end
 
@@ -30,7 +29,7 @@ describe "Flight" do
 
     flight.price.should >= 0
 
-    flight.price.kind_of?(Numeric).should == true
+    flight.price.should be_a_kind_of(Integer)
 
    end
 
@@ -40,7 +39,7 @@ describe "Flight" do
 
     flight.first_class_capacity.should >= 0
 
-    flight.first_class_capacity.kind_of?(Integer).should == true
+    flight.first_class_capacity.should be_a_kind_of(Integer)
 
    end
 
@@ -50,7 +49,7 @@ describe "Flight" do
 
     flight.economic_class_capacity.should >= 0
 
-    flight.economic_class_capacity.kind_of?(Integer).should == true
+    flight.economic_class_capacity.should be_a_kind_of(Integer)
 
    end
 
