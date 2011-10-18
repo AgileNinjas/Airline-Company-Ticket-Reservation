@@ -1,6 +1,6 @@
 require "rspec"
 require "../lib/flight_manager.rb"
-require "../lib/flight.rb"
+require "../lib/route.rb"
 
 describe "My behaviour" do
 
