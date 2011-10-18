@@ -17,9 +17,10 @@ describe "My behaviour" do
 
   end
 
-  it "should have a search method with an argument of type of Query " do
+  it "should have a search method with an argument of type of Query and it should return a list of results" do
     query = mock('Query')
     subject.search(query)
+
   end
 
 end
