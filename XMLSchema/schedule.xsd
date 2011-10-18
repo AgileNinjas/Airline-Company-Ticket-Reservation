@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:element name="schedule">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="flight" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:integer"/>
+                        <xs:element name="departure_date" type="xs:date"/>
+                        <xs:element name="departure_hour" type="xs:time"/>
+                        <xs:element name="arrival_date" type="xs:date"/>
+                        <xs:element name="arrival_hour" type="xs:time"/>
+                        <xs:element name="seats_status" type="xs:boolean"/>
+                        <xs:element name="arrival_city" type="xs:string"/>
+                        <xs:element name="departure_city" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+</xs:schema>

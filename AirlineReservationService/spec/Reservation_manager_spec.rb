@@ -7,17 +7,27 @@ describe "My behaviour" do
     reservation = Reservation.new()
     reservation.max_economic_counter.should == 180.0
   end
+
+
+  it "should max business seats equal to 20" do
+    reservation = Reservation.new()
+    reservation.max_business_counter.should == 20.0
+  end
+
+
+  it "should economic class seats availability greater than zero" do
+    reservation = Reservation.new
+    reservation.search_available_seats("economic",19.0).should == true
+
+  end
+
+
+  #it "should business class seats availability greater than zero" do
+  #    reservation = Reservation.new
+  #    reservation.search_available_seats("business",21)
   #
-  # it "should max business seats equal to 20" do
-  #  reservation = Reservation.new()
-  #  reservation.max_business_counter.should == 20.0
-  #end
-  #
-  #
-  #it "should economic class seats availability greater than zero" do
-  #  reservation = Reservation.new
-  #
-  #end
+  #  end
+
 
 
 
