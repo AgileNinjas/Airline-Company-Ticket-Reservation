@@ -22,11 +22,11 @@ describe "My behaviour" do
   end
 
 
-  #it "should business class seats availability greater than zero" do
-  #    reservation = Reservation.new
-  #    reservation.search_available_seats("business",21)
-  #
-  #  end
+  it "should business class seats availability greater than zero" do
+      reservation = Reservation.new
+      reservation.search_available_seats("business",5).should == true
+
+    end
 
 
 
