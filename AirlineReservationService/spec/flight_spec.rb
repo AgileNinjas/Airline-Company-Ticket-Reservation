@@ -71,6 +71,26 @@ describe "Flight" do
 
    end
 
+  it "flight should have a economic class price" do
+
+     flight = Flight.new
+     flight.economic_class_price.should >= 0
+
+    end
+
+  it "flight should have a first class price" do
+
+       flight = Flight.new
+       flight.first_class_price.should >= 0
+
+  end
+
+   it "flight should have a business class price" do
+
+       flight = Flight.new
+       flight.business_class_price.should >= 0
+
+    end
 
 
 
