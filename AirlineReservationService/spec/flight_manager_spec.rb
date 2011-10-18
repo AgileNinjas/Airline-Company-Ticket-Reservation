@@ -17,13 +17,9 @@ describe "My behaviour" do
 
   end
 
-
   it "should have a search method with an argument of type of Query " do
     query = mock('Query')
     subject.search(query)
-
   end
-
-
 
 end

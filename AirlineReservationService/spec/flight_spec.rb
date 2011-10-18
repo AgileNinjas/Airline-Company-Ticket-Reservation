@@ -8,7 +8,6 @@ describe "Flight" do
     flight = Flight.new
 
     flight.id.should > 0
-
     flight.id.should be_a_kind_of(Integer)
 
   end
@@ -18,7 +17,6 @@ describe "Flight" do
     flight = Flight.new
 
    (20..400).should include(flight.capacity)
-
     flight.capacity.should be_a_kind_of(Integer)
 
   end
@@ -28,7 +26,6 @@ describe "Flight" do
     flight = Flight.new
 
     flight.price.should >= 0
-
     flight.price.should be_a_kind_of(Integer)
 
    end
@@ -38,8 +35,7 @@ describe "Flight" do
     flight = Flight.new
 
     flight.first_class_capacity.should >= 0
-
-    flight.first_class_capacity.should be_a_kind_of(Integer)
+     flight.first_class_capacity.should be_a_kind_of(Integer)
 
    end
 
@@ -48,7 +44,6 @@ describe "Flight" do
     flight = Flight.new
 
     flight.economic_class_capacity.should >= 0
-
     flight.economic_class_capacity.should be_a_kind_of(Integer)
 
    end
@@ -58,7 +53,6 @@ describe "Flight" do
     flight = Flight.new
 
     flight.business_class_capacity.should >= 0
-
     flight.business_class_capacity.should be_a_kind_of(Integer)
 
   end
@@ -66,7 +60,6 @@ describe "Flight" do
    it "all seats of the flight should be either on economic , first class or business class" do
 
     flight = Flight.new
-
     (flight.economic_class_capacity + flight.first_class_capacity + flight.business_class_capacity).should == flight.capacity
 
    end
@@ -90,8 +83,14 @@ describe "Flight" do
        flight = Flight.new
        flight.business_class_price.should >= 0
 
-    end
+   end
 
+    it "flight should have prices for classes in logic order" do
+
+       flight = Flight.new
+       (flight.economic_class_price..flight.business_class_price).should include flight.first_class_price
+
+   end
 
 
 end
