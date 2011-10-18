@@ -12,8 +12,10 @@ class RouteFactory
 
      route_name=xml_doc.root.elements["name"].text
      route_capacity=Integer(xml_doc.root.elements["capacity"].text)
+     route_departure=xml_doc.root.elements["departure"].text
+     route_arrival=xml_doc.root.elements["arrival"].text
 
-     Route.new(route_id,route_name,route_capacity)
+     Route.new(route_id,route_name,route_capacity,route_departure,route_arrival)
 
   end
 end
