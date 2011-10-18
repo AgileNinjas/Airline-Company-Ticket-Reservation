@@ -15,15 +15,28 @@ class Reservation
         else
           false
 
+        end
+
+    elsif kind_of_seat=="business"
+        if number_of_seats < @max_business_counter
+          @max_business_counter = @max_business_counter - number_of_seats
+          true
+        else
+          false
+
+         end
     end
+
   end
 
-    #elsif kind_of_seat=="business"
-    #  if seat < @max_business_counter
-    #    puts "There are available business seats"
-    #  else
-    #    puts "There are not available business seats"
-    #  end
-  end
+
+
+
+
+
+
+
+
+
 
 end
