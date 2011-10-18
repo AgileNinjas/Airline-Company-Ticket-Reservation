@@ -1,3 +1,6 @@
 class Flight
-  # To change this template use File | Settings | File Templates.
+attr_accessor :id
+ def initialize
+   @id=2
+ end
 end

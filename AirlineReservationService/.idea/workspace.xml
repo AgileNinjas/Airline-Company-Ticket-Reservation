@@ -35,7 +35,7 @@
       <file leaf-file-name="flight_spec.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/flight_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="23" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
+            <state line="12" column="35" selection-start="233" selection-end="233" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -44,7 +44,7 @@
       <file leaf-file-name="flight.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/flight.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="82" selection-end="82" vertical-scroll-proportion="0.055452865">
+            <state line="3" column="8" selection-start="55" selection-end="55" vertical-scroll-proportion="0.083179295">
               <folding />
             </state>
           </provider>
@@ -360,14 +360,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/flight_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="23" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
+        <state line="12" column="35" selection-start="233" selection-end="233" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/flight.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="82" selection-end="82" vertical-scroll-proportion="0.055452865">
+        <state line="3" column="8" selection-start="55" selection-end="55" vertical-scroll-proportion="0.083179295">
           <folding />
         </state>
       </provider>
