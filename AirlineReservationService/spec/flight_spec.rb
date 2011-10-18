@@ -1,10 +1,25 @@
 require "rspec"
+require "../lib/flight"
 
-describe "My behaviour" do
+describe "Flight" do
 
-  it "should do something" do
+  it "flight should have an id which is a positive integer" do
 
-    #To change this template use File | Settings | File Templates.
-    true.should == true
+    flight = Flight.new
+    flight.id.should > 0
+    flight.id.kind_of?(1.class).should == true
+
   end
+
+  it "flight should have a capacity which is a positive integer between 20 and 400" do
+
+    flight = Flight.new
+
+    flight.capacity.should >= 20
+    flight.capacity.should <= 400
+
+    flight.id.kind_of?(1.class).should == true
+
+  end
+
 end
