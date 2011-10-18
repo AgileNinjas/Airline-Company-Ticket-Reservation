@@ -17,7 +17,7 @@ describe "Flight" do
 
     flight = Flight.new
 
-    flight.capacity.
+   (20..400).should include(flight.capacity)
 
     flight.capacity.should be_a_kind_of(Integer)
 
@@ -53,12 +53,25 @@ describe "Flight" do
 
    end
 
-   it "all seats of the flight should be either on economic or first class" do
+   it "flight should have a business class capacity which is an positive integer if it exists on the flight and 0 otherwise" do
 
     flight = Flight.new
 
-    (flight.economic_class_capacity + flight.first_class_capacity).should == flight.capacity
+    flight.business_class_capacity.should >= 0
+
+    flight.business_class_capacity.should be_a_kind_of(Integer)
 
   end
+
+   it "all seats of the flight should be either on economic , first class or business class" do
+
+    flight = Flight.new
+
+    (flight.economic_class_capacity + flight.first_class_capacity + flight.business_class_capacity).should == flight.capacity
+
+   end
+
+
+
 
 end
