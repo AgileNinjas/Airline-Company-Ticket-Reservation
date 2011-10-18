@@ -1,4 +1,4 @@
-require "../lib/flight.rb"
+require "../lib/route.rb"
 class Flight_manager
   attr_accessor :flights
         def initialize
