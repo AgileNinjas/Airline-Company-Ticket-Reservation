@@ -13,21 +13,40 @@ class Flight_manager
     @flights.push(flight)
   end
   def search(query)
+
+
+
   file = File.new( "../../XMLSchema/TestSchedule.xml" )
   doc = REXML::Document.new file
 
+   XPath.each( doc, "//flight") do |element|
 
-  XPath.each( doc, "//flight") do |element|
-   if XPath.match(element,"//id")== query.arrival_city
-     puts "yes"
-   end
+
+     XPath.each( element, "//arrival_city") do |element2|
+
+
+     if  element2.text == "amsterdam"
+       puts element["departure_city"].text
+     end
+
+     end
+
+  #XPath.each( doc, "//flight/arrival_city") do |element|
+  #      puts element
+  #if XPath.match(element)== query
+  #   puts query.arrival_city
+  #  puts "true"
+  #end
+
+
+
   end
 
-
   end
 
-end
+  end
 
 fls=Flight_manager.new
-    q=Query.new("uyu","hjhg",12-11-2010,11-10-2011)
-         fls.search(q)
+    q=Query.new("london","manchester",2011-01-01,2011-01-01)
+       fls.search(q)
+
