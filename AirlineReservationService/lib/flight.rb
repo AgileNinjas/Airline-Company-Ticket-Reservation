@@ -19,7 +19,7 @@ attr_accessor :available_seats_business  ,:available_seats_economic , :available
 
    @departure = departure
    @arrival = arrival
-   @available_seats_business=  @business_class_capacity
+   @available_seats_business=  business_class_capacity
    @available_seats_economic =  economic_class_capacity
    @available_seats_first_class = first_class_capacity
  end
