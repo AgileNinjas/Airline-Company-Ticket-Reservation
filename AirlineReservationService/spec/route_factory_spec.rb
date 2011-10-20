@@ -23,4 +23,22 @@ describe RouteFactory do
      subject.new_route.capacity.should == 250
 
   end
+
+  it "should read the default departure" do
+
+     subject.new_route.departure.should == "Munich"
+
+  end
+
+  it "should read the default arrival" do
+
+     subject.new_route.arrival.should == "Rome"
+
+  end
+
+  it "should read the default economic class capacity" do
+
+     subject.new_route.arrival.should == "Rome"
+
+  end
 end

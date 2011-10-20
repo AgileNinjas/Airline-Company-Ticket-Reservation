@@ -12,8 +12,4 @@ class Customer
 
 
 
-
-
-
-
 end

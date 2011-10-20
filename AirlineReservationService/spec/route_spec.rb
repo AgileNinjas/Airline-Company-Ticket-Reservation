@@ -92,7 +92,19 @@ describe "Route" do
        
        (subject.economic_class_price..subject.business_class_price).should include subject.first_class_price
 
+    end
+
+   it "route should have flights as an array" do
+
+      subject.flights.should be_an_instance_of(Array)
    end
+
+  it "should have an add method to flights array" do
+    flights_no = subject.flights.length+1
+    flight = mock('Flight')
+    subject.add_spec flight
+    subject.flights.length.should == flights_no
+  end
 
 
 end

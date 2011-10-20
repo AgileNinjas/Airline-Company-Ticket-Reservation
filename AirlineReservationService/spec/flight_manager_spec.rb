@@ -1,11 +1,10 @@
 require "rspec"
 require "../lib/flight_manager.rb"
-<<<<<<< HEAD
+
 require "../lib/flight.rb"
  require "../lib/query.rb"
-=======
-require "../lib/route.rb"
->>>>>>> 70f29e2d41ced4d13541603ee5ca33b0156a884f
+require "../lib/flight.rb"
+
 
 describe "My behaviour" do
 
