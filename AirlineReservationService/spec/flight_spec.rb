@@ -3,7 +3,7 @@ require "../lib/flight"
 
 describe "Flight" do
 
-  subject {Flight.new}
+  subject {Flight.new(1 ,"default" , 120 , "departure" ,"arrival",20,100,0,100,500, 200,"5",Time.now, Time.now)}
   
   it "flight should have an id which is a positive integer" do
 
@@ -93,5 +93,7 @@ describe "Flight" do
 
   it "should have an economic available seats attribute which should be equal to capacity at initialization" do
       subject.available_seats_economic.should == subject.economic_class_capacity
-    end
+  end
+
+
 end

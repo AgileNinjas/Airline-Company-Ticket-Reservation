@@ -41,4 +41,19 @@ describe FlightFactory do
      subject.get_flight.arrival.should == "Rome"
 
   end
+
+  it "should have a duration attribute" do
+    subject.get_flight.duration.should == "5"
+
+  end
+
+  it "should have an departure time" do
+    subject.get_flight.departure_time.should == Time.utc(2011,11,20,18)
+
+  end
+
+  it "should have an arrival time" do
+    subject.get_flight.arrival_time.should == Time.utc(2011,11,20,23)
+
+  end
 end
