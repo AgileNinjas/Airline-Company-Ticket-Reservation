@@ -17,4 +17,5 @@ attr_accessor :name
    @business_class_price = 500
 
  end
+
 end
