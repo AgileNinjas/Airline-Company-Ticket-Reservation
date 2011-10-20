@@ -1,4 +1,4 @@
-require "../lib/route.rb"
+require "../lib/flight.rb"
 require "rexml/document"
 require "../lib/query"
 include REXML  # so that we don't have to prefix everything with REXML::...

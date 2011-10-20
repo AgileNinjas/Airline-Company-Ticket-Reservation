@@ -3,7 +3,7 @@ require "../lib/flight_manager.rb"
 
 require "../lib/flight.rb"
  require "../lib/query.rb"
-require "../lib/route.rb"
+require "../lib/flight.rb"
 
 
 describe "My behaviour" do
