@@ -1,21 +1,6 @@
 class Flight
-<<<<<<< HEAD
-attr_accessor :id_flight , :capacity , :price
-attr_accessor :first_class_capacity , :economic_class_capacity , :business_class_capacity
-attr_accessor :economic_class_price , :first_class_price   , :business_class_price
 
- def initialize
 
-   @capacity = 120
-   @price = 100
-   @first_class_capacity = 20
-   @economic_class_capacity = 100
-   @business_class_capacity = 0
-   @economic_class_price = 100
-   @first_class_price = 200
-   @business_class_price = 500
-
-=======
 attr_accessor :id , :capacity
 attr_accessor :first_class_capacity , :economic_class_capacity , :business_class_capacity
 attr_accessor :economic_class_price , :first_class_price   , :business_class_price
@@ -28,7 +13,6 @@ attr_accessor :duration ,:departure_time ,:arrival_time
    @name = name
    @id = id
    @capacity = capacity
->>>>>>> cd7bbf211a27320e5e5c32613497eb1a2e4b44f5
 
    @first_class_capacity = first_class_capacity
    @economic_class_capacity = economic_class_capacity
@@ -49,12 +33,10 @@ attr_accessor :duration ,:departure_time ,:arrival_time
    @arrival_time = arrival_time
  end
 
-<<<<<<< HEAD
+
    def flight_id(id_flight=2)
       @id_flight = id_flight
    end
 
-=======
->>>>>>> cd7bbf211a27320e5e5c32613497eb1a2e4b44f5
 
 end
