@@ -5,7 +5,7 @@ describe "Flight" do
 
   subject {Flight.new}
   
-  it "route should have an id which is a positive integer" do
+  it "flight should have an id which is a positive integer" do
 
     
 
@@ -14,7 +14,7 @@ describe "Flight" do
 
   end
 
-  it "route should have a capacity which is a positive integer between 20 and 400" do
+  it "flight should have a capacity which is a positive integer between 20 and 400" do
 
     
 
@@ -23,16 +23,9 @@ describe "Flight" do
 
   end
 
-   it "route should have a price which is a positive number" do
 
-    
 
-    subject.price.should >= 0
-    subject.price.should be_a_kind_of(Integer)
-
-   end
-
-   it "route should have a first class capacity which is an positive integer if it exists on the route and 0 otherwise" do
+   it "flight should have a first class capacity which is an positive integer if it exists on the flight and 0 otherwise" do
 
     
 
@@ -41,7 +34,7 @@ describe "Flight" do
 
    end
 
-   it "route should have a economic class capacity which is an positive integer if it exists on the route and 0 otherwise" do
+   it "flight should have a economic class capacity which is an positive integer if it exists on the flight and 0 otherwise" do
 
     
 
@@ -50,7 +43,7 @@ describe "Flight" do
 
    end
 
-   it "route should have a business class capacity which is an positive integer if it exists on the route and 0 otherwise" do
+   it "flight should have a business class capacity which is an positive integer if it exists on the flight and 0 otherwise" do
 
     
 
@@ -59,41 +52,46 @@ describe "Flight" do
 
   end
 
-   it "all seats of the route should be either on economic , first class or business class" do
+   it "all seats of the flight should be either on economic , first class or business class" do
 
     
     (subject.economic_class_capacity + subject.first_class_capacity + subject.business_class_capacity).should == subject.capacity
 
    end
 
-  it "route should have a economic class price" do
+  it "flight should have a economic class price" do
 
      
      subject.economic_class_price.should >= 0
 
     end
 
-  it "route should have a first class price" do
+  it "flight should have a first class price" do
 
        
        subject.first_class_price.should >= 0
 
   end
 
-   it "route should have a business class price" do
+   it "flight should have a business class price" do
 
        
        subject.business_class_price.should >= 0
 
    end
 
-    it "route should have prices for classes in logic order" do
+    it "flight should have prices for classes in logic order" do
 
        
        (subject.economic_class_price..subject.first_class_price).should include subject.business_class_price
 
     end
 
+    it "should have an business available seats attribute which should be equal to capacity at initialization" do
+      subject.available_seats_business.should == subject.business_class_capacity
+    end
 
-
+  it "should have an economic available seats attribute which should be equal to capacity at initialization" do
+      subject.available_seats_economic.should == subject.economic_class_capacity
+    end
 end
