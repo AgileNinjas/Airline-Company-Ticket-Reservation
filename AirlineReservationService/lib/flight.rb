@@ -34,9 +34,4 @@ attr_accessor :duration ,:departure_time ,:arrival_time
  end
 
 
-   def flight_id(id_flight=2)
-      @id_flight = id_flight
-   end
-
-
 end
