@@ -1,0 +1,28 @@
+<flight>
+  <id>5</id>
+  <name>Munich to Rome</name>
+  <capacity>250</capacity>
+  <departure>Munich</departure>
+  <arrival>Rome</arrival>
+  <first_class_capacity>
+    30
+  </first_class_capacity>
+  <economic_class_capacity>
+    220
+  </economic_class_capacity>
+  <business_class_capacity>
+    0
+  </business_class_capacity>
+  <first_class_price>
+    300
+  </first_class_price>
+  <economic_class_price>
+    200
+  </economic_class_price>
+  <business_class_price>
+    0
+  </business_class_price>
+  <duration>5</duration>
+  <arrival_time>20-11-2011 23:00</arrival_time>
+  <departure_time>20-11-2011 18:00</departure_time>
+</flight>

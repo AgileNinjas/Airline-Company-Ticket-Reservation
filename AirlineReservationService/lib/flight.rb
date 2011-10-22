@@ -38,5 +38,13 @@ attr_accessor :duration ,:departure_time ,:arrival_time
       @id_flight = id_flight
    end
 
+  def <=> objFlight
+    if (self.economic_class_price == objFlight.economic_class_price)
+        return self.duration <=> objFlight.duration
+    else
+        return self.economic_class_price <=> objFlight.economic_class_price
+    end
+  end
+
 
 end
