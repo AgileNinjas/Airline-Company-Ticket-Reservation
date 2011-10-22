@@ -2,6 +2,7 @@ require "rspec"
 require "../lib/reservation.rb"
 
 
+
 describe "My behaviour" do
 
 
@@ -17,6 +18,7 @@ describe "My behaviour" do
 
 
   end
+
 
   it "should have a reservation that includes a flight" do
 
