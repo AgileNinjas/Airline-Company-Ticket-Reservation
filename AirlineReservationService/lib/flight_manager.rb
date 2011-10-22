@@ -5,16 +5,18 @@ include REXML  # so that we don't have to prefix everything with REXML::...
 
 class Flight_manager
   attr_accessor :flights
-        def initialize
-          @flights=[]
-        end
+
+  def initialize
+    @flights=[]
+  end
+
   
   def add_flight(flight)
     @flights.push(flight)
   end
+
+
   def search(query)
-
-
 
   file = File.new( "../../XMLSchema/TestSchedule.xml" )
   doc = REXML::Document.new file

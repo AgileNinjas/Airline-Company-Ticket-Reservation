@@ -1,8 +1,8 @@
 class Query
-<<<<<<< HEAD
-=======
+#<<<<<<< HEAD
+#=======
   attr_accessor :departure_city,:arrival_city,:start_date,:end_date
->>>>>>> cd7bbf211a27320e5e5c32613497eb1a2e4b44f5
+#>>>>>>> cd7bbf211a27320e5e5c32613497eb1a2e4b44f5
 
 
 
