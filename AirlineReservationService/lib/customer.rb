@@ -1,11 +1,12 @@
 class Customer
-      attr_accessor :id_customer
+      attr_accessor :id, :name, :passport
 
 
-
-   def customer_id(id_customer="mike")
-      @id_customer = id_customer
-   end
+      def initialize (id , name, passport)
+         @id = id
+         @name = name
+         @passport = passport
+      end
 
 
 

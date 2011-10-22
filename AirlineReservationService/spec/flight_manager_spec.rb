@@ -2,22 +2,24 @@ require "rspec"
 require "../lib/flight_manager.rb"
 
 require "../lib/flight.rb"
- require "../lib/query.rb"
+require "../lib/query.rb"
 require "../lib/flight.rb"
 
 
 describe "My behaviour" do
 
   subject {Flight_manager.new}
+
   it "should have an array of flight named flights" do
 
-    subject.flights.should be_an_instance_of(Array)
+      subject.flights.should be_an_instance_of(Array)
+
    end
 
   it "should have an add method which will add flight objects to flights array"  do
       flight=mock(Flight)
       subject.add_flight(flight)
-    subject.flights.should include(flight)
+      subject.flights.should include(flight)
 
   end
 
@@ -27,15 +29,14 @@ describe "My behaviour" do
      let(:flight3)  { Flight.new (3, "asdfas2" , 100  , "munich" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now)  }
      let(:flight4)  { Flight.new (4, "asdfas3" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now) }
      let(:flight5)  { Flight.new (5, "asdfas3" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.parse("20-11-2011 23:00") ,Time.now) }
+
     before do
       #flight1 = mock(Flight, :id => 1 , :arrival_city => "manchester" , :departure_city => "london")
-
       subject.add_flight(flight1)
       subject.add_flight(flight2)
       subject.add_flight(flight3)
       subject.add_flight(flight4)
       subject.add_flight(flight5)
-
     end
 
     it "should have a search method with an argument of type of Query and it should return a list of results" do
@@ -77,8 +78,6 @@ describe "My behaviour" do
   it "should have 5 flight ids" do
     subject.flights.length.should == 5
   end
-
-
 
 
 end

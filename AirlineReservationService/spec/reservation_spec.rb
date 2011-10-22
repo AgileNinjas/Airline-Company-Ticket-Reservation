@@ -1,27 +1,30 @@
 require "rspec"
-require "reservation"
-require "customer"
+require "../lib/reservation.rb"
+
 
 describe "My behaviour" do
 
 
+  let(:customer) {mock('Customer')}
+  let(:flight) {mock('Flight')}
 
-  it "should reservation includes a customer_id and a flight_id" do
+  subject {Reservation.new(customer, flight)}
 
-    reservation = Reservation.new()
+  it "should have a reservation that includes a customer" do
 
-    reservation.customer_id.should be_a_kind_of(Integer)
+    customer.stub!(:id).and_return('customer_id')
+    subject.customer.should == customer
+
 
   end
 
+  it "should have a reservation that includes a flight" do
 
-  #it "should " do
-  #
-  #
-  #
-  #end
+      flight.stub!(:id).and_return('flight_id')
+      subject.flight.should == flight
 
 
+    end
 
 
 end
