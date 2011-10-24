@@ -24,11 +24,11 @@ describe "My behaviour" do
   end
 
   context "searching for flights" do
-     let(:flight1) { Flight.new (1, "asdfas" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now) }
-     let(:flight2)  { Flight.new (2, "asdfas1" , 100  , "paris" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now)  }
-     let(:flight3)  { Flight.new (3, "asdfas2" , 100  , "munich" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now)  }
-     let(:flight4)  { Flight.new (4, "asdfas3" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now) }
-     let(:flight5)  { Flight.new (5, "asdfas3" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.parse("20-11-2011 23:00") ,Time.now) }
+     let(:flight1) { Flight.new(1, "asdfas" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now) }
+     let(:flight2)  { Flight.new(2, "asdfas1" , 100  , "paris" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now)  }
+     let(:flight3)  { Flight.new(3, "asdfas2" , 100  , "munich" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now)  }
+     let(:flight4)  { Flight.new(4, "asdfas3" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now) }
+     let(:flight5)  { Flight.new(5, "asdfas3" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.parse("20-11-2011 23:00") ,Time.now) }
 
     before do
       #flight1 = mock(Flight, :id => 1 , :arrival_city => "manchester" , :departure_city => "london")

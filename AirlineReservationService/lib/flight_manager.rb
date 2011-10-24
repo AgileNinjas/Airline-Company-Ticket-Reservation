@@ -8,6 +8,7 @@ include REXML  # so that we don't have to prefix everything with REXML::...
 class Flight_manager
 
   attr_accessor :flights , :flight_ids
+
   def initialize
     @flights=[]
     @flight_ids=[]
@@ -46,7 +47,7 @@ class Flight_manager
 
   flights.each {|flight|
 
-    start_search_date = query.date -  3*3600*24
+    start_search_date = query.date - 3*3600*24
     end_search_date = query.date + 3*3600*24
 
     if (flight.arrival == query.arrival_city) and (flight.departure == query.departure_city) and ((start_search_date <=> flight.departure_time) == -1)  and ((end_search_date <=> flight.departure_time) == 1)
