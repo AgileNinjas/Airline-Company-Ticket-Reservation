@@ -35,6 +35,7 @@ class Main
   end
 
   def show_main_menu
+    puts
     puts "***********************************"
     puts "** Select from the menu below :  **"
     puts "** 1.Search for a flight         **"
