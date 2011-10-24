@@ -38,24 +38,20 @@ class Flight_manager
   end
 
   def search(query)
-  file = File.new( "../xmls/schedule.xml" )
-  doc = REXML::Document.new file
 
   flights_found = []
 
-
+   start_search_date = query.date - 3*3600*24
+  end_search_date = query.date + 3*3600*24
 
   flights.each {|flight|
-
-    start_search_date = query.date - 3*3600*24
-    end_search_date = query.date + 3*3600*24
 
     if (flight.arrival == query.arrival_city) and (flight.departure == query.departure_city) and ((start_search_date <=> flight.departure_time) == -1)  and ((end_search_date <=> flight.departure_time) == 1)
             flights_found.push(flight)
     end
   }
 
-   flights_found.sort!
+   flights_found.sort! {|x,y| x.compare(y)}
 
    return flights_found
   end

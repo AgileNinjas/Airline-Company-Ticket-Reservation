@@ -2,8 +2,8 @@
   <id>4</id>
   <name>Munich to Rome</name>
   <capacity>250</capacity>
-  <departure>Munich</departure>
-  <arrival>Rome</arrival>
+  <departure>munich</departure>
+  <arrival>rome</arrival>
   <first_class_capacity>
     30
   </first_class_capacity>
@@ -23,6 +23,6 @@
     0
   </business_class_price>
   <duration>5</duration>
-  <arrival_time>20-11-2011 23:00</arrival_time>
-  <departure_time>20-11-2011 18:00</departure_time>
+  <arrival_time>12-11-2011 23:00</arrival_time>
+  <departure_time>12-11-2011 18:00</departure_time>
 </flight>

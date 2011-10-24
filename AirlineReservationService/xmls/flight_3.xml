@@ -2,8 +2,8 @@
   <id>3</id>
   <name>Munich to Rome</name>
   <capacity>250</capacity>
-  <departure>Munich</departure>
-  <arrival>Rome</arrival>
+  <departure>munich</departure>
+  <arrival>rome</arrival>
   <first_class_capacity>
     30
   </first_class_capacity>
@@ -17,7 +17,7 @@
     300
   </first_class_price>
   <economic_class_price>
-    200
+    50
   </economic_class_price>
   <business_class_price>
     0

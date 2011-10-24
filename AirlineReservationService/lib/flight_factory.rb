@@ -23,9 +23,9 @@ class FlightFactory
      first_class_capacity  = xml_doc.root.elements["first_class_capacity"].text
      economic_class_capacity  = xml_doc.root.elements["economic_class_capacity"].text
      business_class_capacity  = xml_doc.root.elements["business_class_capacity"].text
-     economic_class_price  = xml_doc.root.elements["economic_class_price"].text
-     first_class_price  = xml_doc.root.elements["first_class_price"].text
-     business_class_price  = xml_doc.root.elements["business_class_price"].text
+     economic_class_price  = Integer(xml_doc.root.elements["economic_class_price"].text)
+     first_class_price  = Integer(xml_doc.root.elements["first_class_price"].text)
+     business_class_price  = Integer(xml_doc.root.elements["business_class_price"].text)
 
                              #id, name , capacity , departure , arrival, first_class_capacity ,economic_class_capacity ,business_class_capacity,economic_class_price,first_class_price,business_class_price , duration , departure_time , arrival_time)
      return Flight.new(flight_id,flight_name,flight_capacity,flight_departure,flight_arrival,first_class_capacity,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price,flight_duration,flight_departure_time,flight_arrival_time)

@@ -7,14 +7,17 @@ class Main
 
   def get_search_details
     puts "Please enter the following information"
+    puts "--------------------------------------"
     puts "Please enter the Departure City: "
-    departure = gets.downcase
+    departure = gets.chomp.downcase
     puts "Please enter the Arrival City: "
-    arrival = gets.downcase
+    arrival = gets.chomp.downcase
     puts "Please enter the Date dd-mm-year: "
-    date = Time.parse(gets)
+    date = Time.parse(gets.chomp)
 
     query = Query.new(departure, arrival, date)
+
+    return query
   end
 
   def show_search_results(query)
@@ -23,10 +26,15 @@ class Main
     results = flight_manager.search(query)
 
     if results.length == 0
-      puts "There no flights corresponding for your search parameters"
+      puts "There is no flight corresponding for your search parameters"
     else
       puts "Results of your search ordered by price and duration are:"
-      results.each {|flight| puts "Flight: " +flight.id.to_s+" Economic price: " +flight.economic_class_price.to_s+ " Duration: "+ flight.duration.to_s}
+      puts "---------------------------------------------------------"
+      results.each {|flight| puts "Flight: " +flight.id.to_s
+      puts "Economic price: " +flight.economic_class_price.to_s  + " pounds"
+      puts "Duration: "+ flight.duration.to_s  + " hours"
+      puts "Departure date: "+flight.departure_time.to_s
+      puts "---------------"}
 
     end
   end
@@ -51,10 +59,10 @@ class Main
     puts "Arrival is: "+flight.arrival
     puts "Departure time is: "+flight.departure_time.to_s
     puts "Arrival time is: "+flight.arrival_time.to_s
-    puts "Flight duration is: "+flight.duration
-    puts "Economic class is: "+flight.economic_class_price.to_s
-    puts "Business class is: "+flight.business_class_price.to_s
-    puts "First class is: "+flight.first_class_price.to_s
+    puts "Flight duration is: "+flight.duration + " hours"
+    puts "Economic class capacity is: "+flight.economic_class_price.to_s + " seats"
+    puts "Business class capacity is: "+flight.business_class_price.to_s + " seats"
+    puts "First class capacity is: "+flight.first_class_price.to_s + " seats"
     end
   end
 
@@ -67,6 +75,7 @@ class Main
 
   def show_search_interface
     query = get_search_details
+    puts
     show_search_results query
   end
 

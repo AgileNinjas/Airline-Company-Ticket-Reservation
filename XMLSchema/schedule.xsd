@@ -7,11 +7,6 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="id" type="xs:integer"/>
-                        <xs:element name="departure_time" type="xs:string"/>
-                        <xs:element name="arrival_time" type="xs:string"/>
-                        <xs:element name="seats_status" type="xs:boolean"/>
-                        <xs:element name="arrival_city" type="xs:string"/>
-                        <xs:element name="departure_city" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>

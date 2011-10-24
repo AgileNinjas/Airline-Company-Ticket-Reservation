@@ -41,7 +41,7 @@ attr_accessor :max_economic_counter, :max_business_counter
       @id_flight = id_flight
   end
 
-  def <=> objFlight
+  def compare objFlight
     if (self.economic_class_price == objFlight.economic_class_price)
         return self.duration <=> objFlight.duration
     else
