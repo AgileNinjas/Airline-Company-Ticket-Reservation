@@ -60,9 +60,9 @@ class Main
     puts "Departure time is: "+flight.departure_time.to_s
     puts "Arrival time is: "+flight.arrival_time.to_s
     puts "Flight duration is: "+flight.duration + " hours"
-    puts "Economic class capacity is: "+flight.economic_class_price.to_s + " seats"
-    puts "Business class capacity is: "+flight.business_class_price.to_s + " seats"
-    puts "First class capacity is: "+flight.first_class_price.to_s + " seats"
+    puts "Economic class price is: "+flight.economic_class_price.to_s + " pounds"
+    puts "Business class price is: "+flight.business_class_price.to_s + " pounds"
+    puts "First class price is: "+flight.first_class_price.to_s + " pounds"
     end
   end
 
