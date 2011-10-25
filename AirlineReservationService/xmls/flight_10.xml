@@ -1,0 +1,28 @@
+<flight>
+  <id>10</id>
+  <name>Dublin to London</name>
+  <capacity>200</capacity>
+  <departure>dublin</departure>
+  <arrival>london</arrival>
+  <first_class_capacity>
+    0
+  </first_class_capacity>
+  <economic_class_capacity>
+    160
+  </economic_class_capacity>
+  <business_class_capacity>
+    40
+  </business_class_capacity>
+  <first_class_price>
+    0
+  </first_class_price>
+  <economic_class_price>
+    150
+  </economic_class_price>
+  <business_class_price>
+    190
+  </business_class_price>
+  <duration>3</duration>
+  <arrival_time>01-12-2011 19:00</arrival_time>
+  <departure_time>01-12-2011 16:00</departure_time>
+</flight>

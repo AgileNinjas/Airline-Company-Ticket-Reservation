@@ -1,0 +1,28 @@
+<flight>
+  <id>8</id>
+  <name>London to Glasgow</name>
+  <capacity>150</capacity>
+  <departure>london</departure>
+  <arrival>glasgow</arrival>
+  <first_class_capacity>
+    0
+  </first_class_capacity>
+  <economic_class_capacity>
+    120
+  </economic_class_capacity>
+  <business_class_capacity>
+    30
+  </business_class_capacity>
+  <first_class_price>
+    0
+  </first_class_price>
+  <economic_class_price>
+    100
+  </economic_class_price>
+  <business_class_price>
+    130
+  </business_class_price>
+  <duration>2</duration>
+  <arrival_time>07-12-2011 14:00</arrival_time>
+  <departure_time>07-12-2011 12:00</departure_time>
+</flight>

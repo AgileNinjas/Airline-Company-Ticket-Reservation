@@ -46,7 +46,7 @@ class Flight_manager
 
   flights.each {|flight|
 
-    if (flight.arrival == query.arrival_city) and (flight.departure == query.departure_city) and ((start_search_date <=> flight.departure_time) == -1)  and ((end_search_date <=> flight.departure_time) == 1)
+    if (flight.arrival == query.arrival_city.downcase) and (flight.departure == query.departure_city.downcase) and ((start_search_date <=> flight.departure_time) == -1)  and ((end_search_date <=> flight.departure_time) == 1)
             flights_found.push(flight)
     end
   }

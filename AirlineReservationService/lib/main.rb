@@ -12,7 +12,7 @@ class Main
     departure = gets.chomp.downcase
     puts "Please enter the Arrival City: "
     arrival = gets.chomp.downcase
-    puts "Please enter the Date dd-mm-year: "
+    puts "Please enter the Departure Date dd-mm-year: "
     date = Time.parse(gets.chomp)
 
     query = Query.new(departure, arrival, date)

@@ -1,0 +1,28 @@
+<flight>
+  <id>9</id>
+  <name>Manchester to London</name>
+  <capacity>200</capacity>
+  <departure>manchester</departure>
+  <arrival>london</arrival>
+  <first_class_capacity>
+    0
+  </first_class_capacity>
+  <economic_class_capacity>
+    180
+  </economic_class_capacity>
+  <business_class_capacity>
+    20
+  </business_class_capacity>
+  <first_class_price>
+    0
+  </first_class_price>
+  <economic_class_price>
+    75
+  </economic_class_price>
+  <business_class_price>
+    90
+  </business_class_price>
+  <duration>1</duration>
+  <arrival_time>04-12-2011 11:00</arrival_time>
+  <departure_time>04-12-2011 10:00</departure_time>
+</flight>
