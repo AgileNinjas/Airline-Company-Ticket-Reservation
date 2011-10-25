@@ -56,6 +56,22 @@ class Flight_manager
    return flights_found
   end
 
+  def route_exist(query)
+
+   route_status = false
+
+
+   flights.each {|flight|
+
+     if (flight.arrival == query.arrival_city.downcase) and (flight.departure == query.departure_city.downcase)
+             route_status = true
+     end
+   }
+
+
+    return route_status
+   end
+
 
 
   end
