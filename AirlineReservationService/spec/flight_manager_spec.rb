@@ -70,5 +70,10 @@ describe "My behaviour" do
      subject.flights.length.should == 10
   end
 
-
+   it "should be able to add new flight"do
+       flight=Flight.new(11, "default1" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.parse("20-11-2011 17:00") ,Time.parse("20-11-2011 23:00"))
+       subject.create_flight(flight)
+        query =  Query.new("manchester","london",Time.parse("20-11-2011 17:00"))
+      subject.search(query).should == flight
+   end
 end
