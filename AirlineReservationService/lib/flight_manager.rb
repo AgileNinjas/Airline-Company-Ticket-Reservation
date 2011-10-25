@@ -56,6 +56,7 @@ class Flight_manager
    return flights_found
   end
 
+
   def create_flight(flight)
      add_flight_xml(flight)
    add_schedule(flight)
@@ -121,6 +122,23 @@ class Flight_manager
 
     File.open("/tmp/abhijith/Airline-Company-Ticket-Reservation/AirlineReservationService/xmls/" + "flight_" + flight.id.to_s + ".xml", 'w') {|f| f.write(doc)}
     end
+
+  def route_exist(query)
+
+     route_status = false
+
+
+     flights.each {|flight|
+
+       if (flight.arrival == query.arrival_city.downcase) and (flight.departure == query.departure_city.downcase)
+               route_status = true
+       end
+     }
+
+
+      return route_status
+     end
+
 
   def add_schedule(flight)
   # file = File.new( "../xmls/schedule.xml" )

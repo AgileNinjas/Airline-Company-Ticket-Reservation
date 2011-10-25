@@ -1,9 +1,12 @@
 require "rspec"
 require "../lib/flight"
+require "../lib/reservation"
 
 describe "Flight" do
 
   subject {Flight.new(1 ,"default" , 120 , "departure" ,"arrival",0,100,20,100,500, 200,"5",Time.now, Time.now)}
+  let(:customer) {mock('Customer')}
+
   
   it "flight should have an id which is a positive integer" do
     subject.id.should > 0
@@ -78,5 +81,14 @@ describe "Flight" do
 
   it "should business class seats availability greater than zero" do
       subject.search_available_seats("business",5).should == true
-    end
+  end
+
+  it "should have an update_available_seats method that receives an reservation as argument and updates the available seats" do
+      reservation = Reservation.new(customer,subject,"economic")
+      no_of_seats = subject.max_economic_counter
+      subject.update_available_seats reservation
+      subject.max_economic_counter = no_of_seats - 1
+  end
+
+
 end

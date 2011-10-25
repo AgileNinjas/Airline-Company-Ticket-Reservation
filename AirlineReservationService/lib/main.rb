@@ -25,10 +25,18 @@ class Main
 
     results = flight_manager.search(query)
 
+
     if results.length == 0
-      puts "There is no flight corresponding for your search parameters"
+       if flight_manager.route_exist(query) == true
+        puts "There is no flight corresponding to your search parameters, but the searched route exist"
+
+       else
+         puts "There is no flight corresponding to your search parameters and the searched route does not exist"
+       end
+
+
     else
-      puts "Results of your search ordered by price and duration are:"
+      puts "Results to your search ordered by price and duration are:"
       puts "---------------------------------------------------------"
       results.each {|flight| puts "Flight: " +flight.id.to_s
       puts "Economic price: " +flight.economic_class_price.to_s  + " pounds"
