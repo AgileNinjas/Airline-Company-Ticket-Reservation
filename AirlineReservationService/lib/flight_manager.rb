@@ -141,17 +141,17 @@ class Flight_manager
 
 
   def add_schedule(flight)
-  # file = File.new( "../xmls/schedule.xml" )
-   # doc = REXML::Document.new file
-   # flight_el=Element.new "flight"
-   #  doc.root[flight.id-1]=flight_el
-   #id_el=Element.new "id"
-   # id_el.text=flight.id
-   #     doc.root[flight.id-1,0]=id_el
+   file = File.new( "../xmls/schedule.xml" )
+    doc = REXML::Document.new file
+   flight_el=Element.new "flight"
+    id_el= flight_el.add_element "id"
+        id_el.text=flight.id
+    doc.root[1,flight.id-1]= flight_el
+ # id_el=Element.new "id"
+  #id_el.text=flight.id
+     # doc.root[flight.id-1,0]=id_el
     #File.open("/tmp/abhijith/Airline-Company-Ticket-Reservation/AirlineReservationService/xmls/schedule.xml", 'w') {|f| f.write(doc)}
-   File.open("../xmls/schedule.xml", 'a') {|f| f.write("<flight>
-       <id>"+flight.id.to_s+"</id>
-   </flight>")}
+   File.open("../xmls/schedule.xml", 'w') {|f| f.write(doc)}
     #file.write(" <flight>
     #   <id>"+flight.id.to_s+"</id>
   # </flight>")
