@@ -15,7 +15,7 @@ class FlightFactory
      flight_capacity = Integer(xml_doc.root.elements["capacity"].text)
      flight_departure = xml_doc.root.elements["departure"].text
      flight_arrival = xml_doc.root.elements["arrival"].text
-     #flight_economic_price =  xml_doc.root.elements["economic_price"].text
+     flight_economic_price =  xml_doc.root.elements["economic_price"].text
      flight_duration = xml_doc.root.elements["duration"].text
 
      flight_departure_time = Time.parse(xml_doc.root.elements["departure_time"].text)

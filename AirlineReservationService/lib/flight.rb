@@ -78,4 +78,12 @@ attr_accessor :max_economic_counter, :max_business_counter
     end
   end
 
+  def update_available_seats reservation
+    if reservation.class_type == "economic"
+          @max_economic_counter = @max_economic_counter - 1
+    elsif reservation.class_type=="business"
+          @max_business_counter = @max_business_counter - 1
+    end
+  end
+
 end
