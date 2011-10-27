@@ -153,8 +153,13 @@ class Flight_manager
 
   def create_id
     get_schedule
-    flights[flights.length-1].id + 1
+    if flights.length == 0
+       1
+    else
+       flights[flights.length-1].id + 1
+    end
   end
+
   end
 
 
