@@ -70,10 +70,21 @@ describe "My behaviour" do
   #   subject.flights.length.should == 10
   #end
 
-   #it "should be able to add new flight"do
-   #    flight=Flight.new(14, "default1" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.parse("20-11-2011 17:00") ,Time.parse("20-11-2011 23:00"))
-   #    subject.create_flight(flight)
-   #     query =  Query.new("manchester","london",Time.parse("20-11-2011 17:00"))
-   #   subject.search(query).should == flight
-   #end
+   it "should be able to add new flight"do
+      my_subject  =Flight_manager.new
+      flight=Flight.new(my_subject.create_id, "default1" , 100  , "sari" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.parse("20-11-2011 17:00") ,Time.parse("20-11-2011 23:00"))
+      my_subject.create_flight(flight)
+      query =  Query.new("sari","london",Time.parse("20-11-2011 17:00"))
+      my_subject.get_schedule
+      new_object=my_subject.search(query)
+      new_object[0].id.should ==  flight.id
+   end
+
+  it "should create new ID for a new flight which is lastID + 1"do
+      my_subject  =Flight_manager.new
+      flight=Flight.new(my_subject.create_id, "default1" , 100  , "shiraz" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.parse("20-11-2011 17:00") ,Time.parse("20-11-2011 23:00"))
+      my_subject.create_flight(flight)
+      new_id= my_subject.create_id
+      new_id.should == flight.id + 1
+  end
 end

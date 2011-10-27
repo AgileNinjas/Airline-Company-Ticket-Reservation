@@ -95,4 +95,6 @@ attr_accessor :max_economic_counter, :max_business_counter , :max_first_class_co
     end
   end
 
+
+
 end
