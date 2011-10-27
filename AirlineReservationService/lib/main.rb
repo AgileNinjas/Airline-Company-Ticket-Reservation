@@ -2,8 +2,13 @@ require "../lib/flight_factory"
 require "../lib/flight"
 require "../lib/query"
 require "../lib/flight_manager"
+require "../lib/reservation_manager"
 
 class Main
+
+  def initialize
+    @flight_factory = FlightFactory.new
+  end
 
   def get_search_details
     puts "Please enter the following information"
@@ -31,7 +36,7 @@ class Main
         puts "There is no flight corresponding to your search parameters, but the searched route exist"
 
        else
-         puts "There is no flight corresponding to your search parameters and the searched route does not exist"
+         puts "There is no flight corresponding to your sear ch parameters and the searched route does not exist"
        end
 
 
@@ -52,13 +57,13 @@ class Main
   def get_flight_id
     puts "*******  Search a flight ********"
     puts "Please enter the flight id:"
-    flight_id = Integer(gets)
+    flight_id = Integer(gets.chomp)
   end
 
   def show_details  flight_id
-    flight_factory=FlightFactory.new
 
-    flight= flight_factory.get_flight(flight_id)
+
+    flight= @flight_factory.get_flight(flight_id)
     if (flight == nil)
       puts "Flight id doesn't exists"
     else
@@ -74,6 +79,53 @@ class Main
     end
   end
 
+  def show_classes_available flight_id
+
+    flight = @flight_factory.get_flight flight_id
+
+    puts "Choose one of the classes available:"
+
+    class_types_available=[];
+      index = 1
+    if (flight.max_economic_counter > 0 )
+      puts index.to_s+". Economic class available    Price:"+flight.economic_class_price.to_s
+      index=index+1
+      class_types_available.push("economic")
+    end
+
+    if (flight.max_business_counter >0 )
+      puts index.to_s+". Business class available    Price:"+flight.business_class_price.to_s
+      index=index+1
+      class_types_available.push("business")
+    end
+
+    if (flight.max_first_class_counter >0 )
+      puts index.to_s+". First class available    Price:"+flight.first_class_price.to_s
+      class_types_available.push("first")
+    end
+
+    class_types_available[Integer(gets.chomp) - 1]
+
+  end
+
+  def get_customer_passport_no
+
+    puts "In order to reserve you have to be registered. Please insert your passport number:"
+    gets.chomp
+  end
+
+  def generate_reservation_code reservation
+    return reservation.confirmation_code
+  end
+
+  def reserve_flight
+    flight_id = get_flight_id
+    class_type = show_classes_available flight_id
+    customer_passport_no = get_customer_passport_no
+    reservation_manager = ReservationManager.new
+    reservation =  reservation_manager.create_reservation(Customer.new(1,"John Doe",customer_passport_no) ,@flight_factory.get_flight(flight_id),class_type)
+    puts "You have reserved an flight with this reservation code:"+ generate_reservation_code(reservation).to_s
+  end
 
   def show_flight_details
     id = get_flight_id
@@ -93,7 +145,8 @@ class Main
     puts "** Select from the menu below :  **"
     puts "** 1.Search for a flight         **"
     puts "** 2.Show flight details         **"
-    puts "** 3.Exit                        **"
+    puts "** 3.Reserve flight              **"
+    puts "** 4.Exit                        **"
     puts "***********************************"
     puts
     action=Integer(gets)
@@ -108,6 +161,8 @@ class Main
       when 2
         then show_flight_details
       when 3
+        then reserve_flight
+      when 4
         then break
     end
 

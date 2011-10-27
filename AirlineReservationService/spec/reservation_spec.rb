@@ -25,4 +25,7 @@ describe "My behaviour" do
   it "should have a confirmation code in order to be identified" do
      subject.confirmation_code.should be_an_instance_of(String)
   end
+
+
+
 end

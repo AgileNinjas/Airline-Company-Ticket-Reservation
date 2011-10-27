@@ -12,7 +12,7 @@ class ReservationManager
     if (flight.search_available_seats(class_type,1))
         reservation = Reservation.new(customer,flight,class_type)
         reservations.push(reservation)
-        flight.update_available_seats(class_type,1)
+        flight.update_available_seats(reservation)
         return reservation
     else
         return nil
