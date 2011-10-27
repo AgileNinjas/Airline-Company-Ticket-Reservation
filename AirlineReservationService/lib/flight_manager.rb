@@ -120,7 +120,7 @@ class Flight_manager
     departure_time_el.text=flight.departure_time
     doc.root[13]=departure_time_el
 
-    File.open("/tmp/abhijith/Airline-Company-Ticket-Reservation/AirlineReservationService/xmls/" + "flight_" + flight.id.to_s + ".xml", 'w') {|f| f.write(doc)}
+    File.open("../xmls/" + "flight_" + flight.id.to_s + ".xml", 'w') {|f| f.write(doc)}
     end
 
   def route_exist(query)
@@ -143,18 +143,12 @@ class Flight_manager
   def add_schedule(flight)
    file = File.new( "../xmls/schedule.xml" )
     doc = REXML::Document.new file
-   flight_el=Element.new "flight"
+    flight_el=Element.new "flight"
     id_el= flight_el.add_element "id"
-        id_el.text=flight.id
-    doc.root[1,flight.id-1]= flight_el
- # id_el=Element.new "id"
-  #id_el.text=flight.id
-     # doc.root[flight.id-1,0]=id_el
-    #File.open("/tmp/abhijith/Airline-Company-Ticket-Reservation/AirlineReservationService/xmls/schedule.xml", 'w') {|f| f.write(doc)}
+    id_el.text=flight.id
+   doc.root.insert_after(doc.elements["flight",flight.id],flight_el)
    File.open("../xmls/schedule.xml", 'w') {|f| f.write(doc)}
-    #file.write(" <flight>
-    #   <id>"+flight.id.to_s+"</id>
-  # </flight>")
+
   end
 
   end

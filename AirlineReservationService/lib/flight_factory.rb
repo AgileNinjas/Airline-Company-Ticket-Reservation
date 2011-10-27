@@ -9,14 +9,15 @@ class FlightFactory
   def get_flight  flight_id = 1
     begin
      xml_name_for_flight="../xmls/flight_"+flight_id.to_s+".xml"
+
      xml_doc = Document.new File.new(xml_name_for_flight)
 
      flight_name=xml_doc.root.elements["name"].text
      flight_capacity = Integer(xml_doc.root.elements["capacity"].text)
      flight_departure = xml_doc.root.elements["departure"].text
      flight_arrival = xml_doc.root.elements["arrival"].text
-     flight_economic_price =  xml_doc.root.elements["economic_price"].text
-     flight_duration = xml_doc.root.elements["duration"].text
+     #flight_economic_price =  xml_doc.root.elements["economic_class_price"].text
+     flight_duration = Integer(xml_doc.root.elements["duration"].text)
 
      flight_departure_time = Time.parse(xml_doc.root.elements["departure_time"].text)
      flight_arrival_time = Time.parse(xml_doc.root.elements["arrival_time"].text)

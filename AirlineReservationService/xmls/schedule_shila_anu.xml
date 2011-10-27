@@ -1,5 +1,38 @@
-<flight>
+  <schedule>
+    <flight>
+       <id>1</id>
+   </flight>
+    <flight>
+       <id>2</id>
+   </flight>
+    <flight>
+       <id>3</id>
+   </flight>
+    <flight>
+       <id>4</id>
+   </flight>
+    <flight>
+       <id>5</id>
+   </flight>
+    <flight>
+       <id>6</id>
+   </flight>
+    <flight>
+       <id>7</id>
+   </flight>
+    <flight>
+       <id>8</id>
+   </flight>
+    <flight>
+       <id>9</id>
+   </flight>
+    <flight>
+       <id>10</id>
+   </flight>
+    <flight>
        <id>11</id>
-   </flight><flight>
+   </flight>
+    <flight>
        <id>12</id>
    </flight>
+  </schedule>
