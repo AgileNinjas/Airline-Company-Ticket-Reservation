@@ -20,6 +20,28 @@ class ReservationManager
 
   end
 
+  def get_reservation confirmation_code
+    reservations.each {|reservation|
+        if (reservation.confirmation_code==confirmation_code)
+          return reservation
+        end
+    }
+    return nil
+  end
+
+  def get_all_reservations
+    file = File.new( "../xmls/reservation.xml" )
+    doc = REXML::Document.new file
+
+    @reservations=[]
+    doc.elements.each("reservations/reservation") { |element|
+
+        customer_id = element.elements["customer_passport"].text
+       // reservation =  create_reservation ()
+
+    }
+
+  end
 
 
 end

@@ -33,6 +33,21 @@ describe "Reservation Manager" do
       subject.create_reservation(customer,flight)
     end
 
+  it "should have a method get_reservation that returns an reservation when it is supplied with a confirmation code" do
+    reservation = subject.create_reservation(customer,flight)
+    subject.get_reservation(reservation.confirmation_code).should == reservation
+  end
+
+  it " get_reservation should return nil if the confirmation code doesnt exist" do
+    reservation = subject.create_reservation(customer,flight)
+    subject.get_reservation("a code").should == nil
+  end
+
+  it "should have an method named get_all_reservations that adds reservations to the array" do
+    subject.get_all_reservations
+    subject.reservations.length.should == 3
+  end
+
 
 end
 
