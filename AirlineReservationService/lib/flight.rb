@@ -86,4 +86,6 @@ attr_accessor :max_economic_counter, :max_business_counter
     end
   end
 
+
+
 end

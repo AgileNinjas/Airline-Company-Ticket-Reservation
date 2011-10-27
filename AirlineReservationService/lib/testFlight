@@ -5,4 +5,5 @@ require "../lib/flight.rb"
 
 flight=Flight.new(13, "default1" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now)
 object= Flight_manager.new
+object.get_schedule
 object.create_flight(flight)

@@ -15,7 +15,7 @@ class Flight_manager
     file = File.new( "../xmls/schedule.xml" )
     doc = REXML::Document.new file
 
-    get_schedule
+    #get_schedule
 
     XPath.each( doc, "//flight") do |element|
          @flight_ids.push(element.elements["id"].text)
@@ -29,10 +29,10 @@ class Flight_manager
   def get_schedule
     file = File.new( "../xmls/schedule.xml" )
     doc = REXML::Document.new file
-
+      @flights=[]
     flight_factory = FlightFactory.new
     doc.elements.each("schedule/flight") { |element|
-      flight_id = element.elements["id"].text
+      flight_id = Integer(element.elements["id"].text)
       add_flight(flight_factory.get_flight(flight_id ))
     }
   end
@@ -151,6 +151,10 @@ class Flight_manager
 
   end
 
+  def create_id
+    get_schedule
+    flights[flights.length-1].id + 1
+  end
   end
 
 

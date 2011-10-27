@@ -22,6 +22,7 @@ class Main
 
   def show_search_results(query)
     flight_manager = Flight_manager.new
+     flight_manager.get_schedule
 
     results = flight_manager.search(query)
 
