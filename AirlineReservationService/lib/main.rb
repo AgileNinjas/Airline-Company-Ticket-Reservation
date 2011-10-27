@@ -104,12 +104,21 @@ class Main
       class_types_available.push("first")
     end
 
-    class_types_available[Integer(gets.chomp) - 1]
+    return class_types_available[Integer(gets.chomp) - 1]
+
+  end
+
+  def show_reservation_details reservation
+
+    flight = reservation.flight
+    puts "You have reserved an flight with this reservation code:"+ generate_reservation_code(reservation).to_s
+    puts ""
+    puts "You have reserved a seat in the flight: " +flight.name+" of class: "+reservation.class_type+" departing from: "+flight.departure+" to Arrive at: "+flight.arrival
+    puts ""
 
   end
 
   def get_customer_passport_no
-
     puts "In order to reserve you have to be registered. Please insert your passport number:"
     gets.chomp
   end
@@ -124,7 +133,8 @@ class Main
     customer_passport_no = get_customer_passport_no
     reservation_manager = ReservationManager.new
     reservation =  reservation_manager.create_reservation(Customer.new(1,"John Doe",customer_passport_no) ,@flight_factory.get_flight(flight_id),class_type)
-    puts "You have reserved an flight with this reservation code:"+ generate_reservation_code(reservation).to_s
+
+    show_reservation_details reservation
   end
 
   def show_flight_details

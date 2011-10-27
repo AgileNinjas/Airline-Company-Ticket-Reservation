@@ -15,7 +15,7 @@ class Reservation
        string  =  (0..7).map{ o[rand(o.length)]  }.join;
 
        @confirmation_code = string
-       puts string
+
   end
 
 
