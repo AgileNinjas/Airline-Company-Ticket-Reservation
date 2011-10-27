@@ -1,5 +1,6 @@
 <schedule>
   <flight>
+
      <id>1</id>
  </flight>
   <flight>
@@ -35,4 +36,6 @@
   <flight>
      <id>12</id>
  </flight>
-<flight><id>16</id></flight><flight><id>13</id></flight><flight><id>14</id></flight></schedule>
+
+</schedule>
+
