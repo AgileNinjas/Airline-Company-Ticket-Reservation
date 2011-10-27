@@ -27,7 +27,7 @@ class Main
 
   def show_search_results(query)
     flight_manager = Flight_manager.new
-     flight_manager.get_schedule
+    flight_manager.get_schedule
 
     results = flight_manager.search(query)
 
@@ -73,7 +73,7 @@ class Main
     puts "Arrival is: "+flight.arrival
     puts "Departure time is: "+flight.departure_time.to_s
     puts "Arrival time is: "+flight.arrival_time.to_s
-    puts "Flight duration is: "+flight.duration + " hours"
+    puts "Flight duration is: "+flight.duration.to_s + " hours"
     puts "Economic class price is: "+flight.economic_class_price.to_s + " pounds"
     puts "Business class price is: "+flight.business_class_price.to_s + " pounds"
     puts "First class price is: "+flight.first_class_price.to_s + " pounds"
@@ -147,11 +147,56 @@ class Main
     puts "** 1.Search for a flight         **"
     puts "** 2.Show flight details         **"
     puts "** 3.Reserve flight              **"
-    puts "** 4.Exit                        **"
+    puts "** 4.Add flight                  **"
+    puts "** 5.Exit                        **"
     puts "***********************************"
     puts
     action=Integer(gets)
   end
+
+  def show_adding_flight
+    puts "Please enter the following information"
+    puts "--------------------------------------"
+    puts "Please enter the name of flight: "
+    name = gets.chomp.downcase
+    puts "Please enter the capacity of the airplane: "
+    capacity = gets.chomp.downcase
+    puts "Please enter the Departure city: "
+    departure_city = gets.chomp.downcase
+    puts "Please enter the Arrival city: "
+    arrival_city = gets.chomp.downcase
+    puts "Please enter the first class capacity of the airplane: "
+    first_class_capacity = Integer(gets.chomp)
+    puts "Please enter the economic class capacity of the flight: "
+    economic_class_capacity = Integer(gets.chomp)
+    puts "Please enter the business class capacity of the flight: "
+    business_class_capacity = Integer(gets.chomp)
+    puts "Please enter the economic class price of the flight: "
+    economic_class_price = Integer(gets.chomp)
+    puts "Please enter the first class price of the flight: "
+    first_class_price = Integer(gets.chomp)
+    puts "Please enter the business class price of the flight : "
+    business_class_price  = Integer(gets.chomp)
+    puts "Please enter the duration of the flight: "
+    duration = Integer(gets.chomp)
+    puts "Please enter the departure time of the flight: "
+    departure_time = Time.parse (gets.chomp)
+    puts "Please enter the arrival time of the flight: "
+    arrival_time = Time.parse (gets.chomp)
+
+    begin
+    flight_manager = Flight_manager.new
+    flight=Flight.new(flight_manager.create_id, name , capacity  , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time)
+
+    flight_manager.create_flight(flight)
+    puts "Your flight has been added successfully"
+    rescue
+        puts "System failed add your flight"
+    end
+  end
+
+
+
 
   def show_interface
     while 1
@@ -164,6 +209,8 @@ class Main
       when 3
         then reserve_flight
       when 4
+        then show_adding_flight
+      when 5
         then break
     end
 
@@ -171,5 +218,7 @@ class Main
 
 
   end
+
+
 
 end
