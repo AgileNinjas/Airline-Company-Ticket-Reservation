@@ -61,8 +61,9 @@ class Flight_manager
      add_flight_xml(flight)
      add_schedule(flight)
   end
+
     def add_flight_xml (flight)
-       doc = Document.new "<flight></flight>"
+    doc = Document.new "<flight></flight>"
 
     id_el=Element.new "id"
     id_el.text=flight.id
@@ -72,15 +73,15 @@ class Flight_manager
     name_el.text=flight.name
     doc.root[1]=name_el
 
-     capacity_el=Element.new "capacity"
+    capacity_el=Element.new "capacity"
     capacity_el.text=flight.capacity
     doc.root[2]=capacity_el
 
-     departure_el=Element.new "departure"
+    departure_el=Element.new "departure"
     departure_el.text=flight.departure
     doc.root[3]=departure_el
 
-     arrival_el=Element.new "arrival"
+    arrival_el=Element.new "arrival"
     arrival_el.text=flight.arrival
     doc.root[4]=arrival_el
 
@@ -146,10 +147,11 @@ class Flight_manager
     flight_el=Element.new "flight"
     id_el= flight_el.add_element "id"
     id_el.text=flight.id
-   doc.root.insert_after(doc.elements["flight",flight.id],flight_el)
-   File.open("../xmls/schedule.xml", 'w') {|f| f.write(doc)}
+    doc.root.insert_after(doc.elements["flight",flight.id],flight_el)
+    File.open("../xmls/schedule.xml", 'w') {|f| f.write(doc)}
 
   end
+
 
   def create_id
     get_schedule

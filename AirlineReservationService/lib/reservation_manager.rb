@@ -37,7 +37,7 @@ class ReservationManager
     doc.elements.each("reservations/reservation") { |element|
 
         customer_id = element.elements["customer_passport"].text
-       // reservation =  create_reservation ()
+        #reservation =  create_reservation()
 
     }
 

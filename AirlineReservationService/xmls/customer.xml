@@ -32,4 +32,5 @@
 
 
 
-</customer_details>
+
+<customer><id>7</id><name>mike</name><passport>777</passport></customer></customer_details>
