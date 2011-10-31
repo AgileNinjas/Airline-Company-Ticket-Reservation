@@ -25,4 +25,5 @@
   <duration>1</duration>
   <arrival_time>04-12-2011 11:00</arrival_time>
   <departure_time>04-12-2011 10:00</departure_time>
+  <first_class_availability>100</first_class_availability><economic_class_availability>200</economic_class_availability><business_class_availability>20</business_class_availability>
 </flight>

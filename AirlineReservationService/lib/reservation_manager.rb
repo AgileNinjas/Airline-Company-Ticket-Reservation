@@ -1,4 +1,5 @@
 require "reservation.rb"
+require "flight_manager"
 
 class ReservationManager
 
@@ -13,6 +14,8 @@ class ReservationManager
         reservation = Reservation.new(customer,flight,class_type)
         reservations.push(reservation)
         flight.update_available_seats(reservation)
+        flight_manager = Flight_manager.new
+        flight_manager.add_flight_xml(flight)
         return reservation
     else
         return nil
@@ -30,14 +33,21 @@ class ReservationManager
   end
 
   def get_all_reservations
-    file = File.new( "../xmls/reservation.xml" )
+    file = File.new( "../xmls/reservations.xml" )
     doc = REXML::Document.new file
 
     @reservations=[]
     doc.elements.each("reservations/reservation") { |element|
 
         customer_id = element.elements["customer_passport"].text
-        #reservation =  create_reservation()
+
+
+
+        customer_id = element.elements["code"].text
+        customer_id = element.elements["flight_id"].text
+        customer_id = element.elements["class_type"].text
+
+
 
     }
 

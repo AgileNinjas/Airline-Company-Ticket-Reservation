@@ -65,12 +65,12 @@ describe "Flight" do
 
 
   it "should max economic seats equal to 100" do
-    subject.max_economic_counter.should == 100.0
+    subject.available_seats_economic.should == 100.0
   end
 
 
   it "should max business seats equal to 20" do
-    subject.max_business_counter.should == 20.0
+    subject.available_seats_business.should == 20.0
   end
 
 
@@ -85,9 +85,9 @@ describe "Flight" do
 
   it "should have an update_available_seats method that receives an reservation as argument and updates the available seats" do
       reservation = Reservation.new(customer,subject,"economic")
-      no_of_seats = subject.max_economic_counter
+      no_of_seats = subject.available_seats_economic
       subject.update_available_seats reservation
-      subject.max_economic_counter = no_of_seats - 1
+      subject.available_seats_economic.should == no_of_seats - 1
   end
 
 

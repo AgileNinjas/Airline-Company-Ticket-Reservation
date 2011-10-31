@@ -3,11 +3,14 @@ require "../lib/flight"
 require "../lib/query"
 require "../lib/flight_manager"
 require "../lib/reservation_manager"
+require "../lib/customer_manager"
+require "../lib/customer"
 
 class Main
 
   def initialize
     @flight_factory = FlightFactory.new
+    @customer_manager = Customer_manager.new
   end
 
   def get_search_details
@@ -65,6 +68,7 @@ class Main
 
 
     flight= @flight_factory.get_flight(flight_id)
+
     if (flight == nil)
       puts "Flight id doesn't exists"
     else
@@ -80,6 +84,26 @@ class Main
     end
   end
 
+
+  def show_cust_details(passport)
+
+    customer_details = @customer_manager.get_customer_by_passport_number(passport)
+    #customer_details = @customer_manager.get_customer_by_passport_number(passport)
+
+    puts customer_details
+
+    if (customer_details == nil)
+      puts "Customer doesn't exists"
+    else
+     puts "hi"
+    #puts "Customer id is: "+customer_details.id
+    #puts "Customer name is: "+customer_details.name
+    puts "Customer passport number is: "+customer_details.passport
+
+    end
+  end
+
+
   def show_classes_available flight_id
 
     flight = @flight_factory.get_flight flight_id
@@ -88,19 +112,19 @@ class Main
 
     class_types_available=[];
       index = 1
-    if (flight.max_economic_counter > 0 )
+    if (flight.available_seats_economic > 0 )
       puts index.to_s+". Economic class available    Price:"+flight.economic_class_price.to_s
       index=index+1
       class_types_available.push("economic")
     end
 
-    if (flight.max_business_counter >0 )
+    if (flight.available_seats_business >0 )
       puts index.to_s+". Business class available    Price:"+flight.business_class_price.to_s
       index=index+1
       class_types_available.push("business")
     end
 
-    if (flight.max_first_class_counter >0 )
+    if (flight.available_seats_first_class >0 )
       puts index.to_s+". First class available    Price:"+flight.first_class_price.to_s
       class_types_available.push("first")
     end
@@ -119,9 +143,10 @@ class Main
 
   end
 
-  def get_customer_passport_no
-    puts "In order to reserve you have to be registered. Please insert your passport number:"
-    gets.chomp
+  def get_customer_passport
+    puts "*******  Search a customer ********"
+    puts "Please insert your passport number:"
+    passport = Integer(gets.chomp)
   end
 
   def generate_reservation_code reservation
@@ -144,6 +169,8 @@ class Main
   end
 
 
+
+
   def show_search_interface
     query = get_search_details
     puts
@@ -158,7 +185,8 @@ class Main
     puts "** 2.Show flight details         **"
     puts "** 3.Reserve flight              **"
     puts "** 4.Add flight                  **"
-    puts "** 5.Exit                        **"
+    puts "** 5.Show customer details       **"
+    puts "** 6.Exit                        **"
     puts "***********************************"
     puts
     action=Integer(gets)
@@ -190,9 +218,9 @@ class Main
     puts "Please enter the duration of the flight: "
     duration = Integer(gets.chomp)
     puts "Please enter the departure time of the flight: "
-    departure_time = Time.parse (gets.chomp)
+    departure_time = Time.parse(gets.chomp)
     puts "Please enter the arrival time of the flight: "
-    arrival_time = Time.parse (gets.chomp)
+    arrival_time = Time.parse(gets.chomp)
 
     begin
     flight_manager = Flight_manager.new
@@ -203,6 +231,12 @@ class Main
     rescue
         puts "System failed add your flight"
     end
+  end
+
+
+  def show_customer_details
+     passport = get_customer_passport
+     show_cust_details passport
   end
 
 
@@ -221,6 +255,8 @@ class Main
       when 4
         then show_adding_flight
       when 5
+        then show_customer_details
+      when 6
         then break
     end
 

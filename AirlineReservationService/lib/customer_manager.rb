@@ -8,12 +8,19 @@ class Customer_manager
 
   def initialize
     @customers=[]
+    get_all_customers
   end
 
   def add_customer(customer)
     @customers.push(customer)
   end
 
+  def get_all_customers
+      file = File.new( "../xmls/customer.xml" )
+      doc = REXML::Document.new file
+
+
+  end
 
   def add_customer_xml(customer)
        file = File.new( "../xmls/customer.xml" )
@@ -35,21 +42,6 @@ class Customer_manager
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   def get_customer_by_passport_number(passport_number)
 
   customers.each {|customer|
@@ -58,9 +50,29 @@ class Customer_manager
   end
   }
 
+  return nil
+
+  end
 
 
-end
+  def get_customer_details(passport)
+        begin
+
+     xml_customer_details="../xmls/customer.xml"
+
+     xml_doc = Document.new File.new( xml_customer_details)
+
+     customer_id=Integer(xml_doc.root.elements["id"].text)
+     customer_name=xml_doc.root.elements["name"].text
+     customer_passport=Integer(xml_doc.root.elements["passport"].text)
+
+     return Customer.new(customer_id,customer_name,customer_passport)
+
+    rescue
+      return nil
+    end
+  end
+
 
 end
 
