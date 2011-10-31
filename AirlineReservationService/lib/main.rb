@@ -88,19 +88,19 @@ class Main
 
     class_types_available=[];
       index = 1
-    if (flight.max_economic_counter > 0 )
+    if (flight.available_seats_economic > 0 )
       puts index.to_s+". Economic class available    Price:"+flight.economic_class_price.to_s
       index=index+1
       class_types_available.push("economic")
     end
 
-    if (flight.max_business_counter >0 )
+    if (flight.available_seats_business >0 )
       puts index.to_s+". Business class available    Price:"+flight.business_class_price.to_s
       index=index+1
       class_types_available.push("business")
     end
 
-    if (flight.max_first_class_counter >0 )
+    if (flight.available_seats_first_class >0 )
       puts index.to_s+". First class available    Price:"+flight.first_class_price.to_s
       class_types_available.push("first")
     end

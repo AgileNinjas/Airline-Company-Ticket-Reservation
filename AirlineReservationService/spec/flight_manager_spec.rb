@@ -77,7 +77,7 @@ describe "My behaviour" do
       query =  Query.new("sari","london",Time.parse("20-11-2011 17:00"))
       my_subject.get_schedule
       new_object=my_subject.search(query)
-      new_object[0].id.should ==  flight.id
+      new_object[new_object.length-1].id.should ==  flight.id
    end
 
   it "should create new ID for a new flight which is lastID + 1"do

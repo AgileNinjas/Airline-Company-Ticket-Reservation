@@ -96,6 +96,8 @@ class Flight_manager
     business_class_capacity_el.text=flight.business_class_capacity
     doc.root[7]=business_class_capacity_el
 
+
+
      first_class_price_el=Element.new "first_class_price"
     first_class_price_el.text=flight.first_class_price
     doc.root[8]=first_class_price_el
@@ -119,6 +121,18 @@ class Flight_manager
     departure_time_el=Element.new "departure_time"
     departure_time_el.text=flight.departure_time
     doc.root[13]=departure_time_el
+
+         first_class_availability_el=Element.new "first_class_availability"
+         first_class_availability_el.text=flight.available_seats_first_class
+         doc.root[14]=first_class_availability_el
+
+          economic_class_capacity_el=Element.new "economic_class_availability"
+         economic_class_capacity_el.text=flight.available_seats_economic
+         doc.root[15]=economic_class_capacity_el
+
+          business_class_capacity_el=Element.new "business_class_availability"
+         business_class_capacity_el.text=flight.available_seats_business
+         doc.root[16]=business_class_capacity_el
 
     File.open("../xmls/" + "flight_" + flight.id.to_s + ".xml", 'w') {|f| f.write(doc)}
     end
