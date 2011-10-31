@@ -2,6 +2,7 @@ require "../lib/reservation"
 require "../lib/customer"
 require "../lib/flight"
 
+
 class Reservation
       attr_accessor :customer, :flight , :class_type , :confirmation_code
 

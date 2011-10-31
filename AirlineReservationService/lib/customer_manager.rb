@@ -19,7 +19,7 @@ def get_customer_by_passport_number(passport_number)
 
   customers.each {|customer|
   if(customer.passport==passport_number)
-    puts "hi"
+
     return customer
   end
   }

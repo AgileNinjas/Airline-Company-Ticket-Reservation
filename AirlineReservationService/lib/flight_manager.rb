@@ -162,7 +162,6 @@ class Flight_manager
     id_el.text=flight.id
    doc.root.insert_after(doc.elements["flight",flight.id],flight_el)
    File.open("../xmls/schedule.xml", 'w') {|f| f.write(doc)}
-
   end
 
   def create_id
@@ -173,6 +172,7 @@ class Flight_manager
        flights[flights.length-1].id + 1
     end
   end
+
 
   end
 

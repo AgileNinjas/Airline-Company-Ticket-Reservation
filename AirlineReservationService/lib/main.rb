@@ -77,7 +77,9 @@ class Main
     puts "Economic class price is: "+flight.economic_class_price.to_s + " pounds"
     puts "Business class price is: "+flight.business_class_price.to_s + " pounds"
     puts "First class price is: "+flight.first_class_price.to_s + " pounds"
+    puts ""
     end
+    return flight
   end
 
   def show_classes_available flight_id
@@ -133,14 +135,16 @@ class Main
     class_type = show_classes_available flight_id
     customer_passport_no = get_customer_passport_no
     reservation_manager = ReservationManager.new
-    reservation =  reservation_manager.create_reservation(Customer.new(1,"John Doe",customer_passport_no) ,@flight_factory.get_flight(flight_id),class_type)
-
+    # refactor
+    customer = Customer.new(1,"John Doe",customer_passport_no)
+    reservation =  reservation_manager.add_new_reservation( customer ,@flight_factory.get_flight(flight_id),class_type)
     show_reservation_details reservation
   end
 
   def show_flight_details
     id = get_flight_id
     show_details id
+
   end
 
 
@@ -158,7 +162,8 @@ class Main
     puts "** 2.Show flight details         **"
     puts "** 3.Reserve flight              **"
     puts "** 4.Add flight                  **"
-    puts "** 5.Exit                        **"
+    puts "** 5.Update flight               **"
+    puts "** 6.Exit                        **"
     puts "***********************************"
     puts
     action=Integer(gets)
@@ -190,9 +195,9 @@ class Main
     puts "Please enter the duration of the flight: "
     duration = Integer(gets.chomp)
     puts "Please enter the departure time of the flight: "
-    departure_time = Time.parse (gets.chomp)
+    departure_time = Time.parse(gets.chomp)
     puts "Please enter the arrival time of the flight: "
-    arrival_time = Time.parse (gets.chomp)
+    arrival_time = Time.parse(gets.chomp)
 
     begin
     flight_manager = Flight_manager.new
@@ -221,6 +226,8 @@ class Main
       when 4
         then show_adding_flight
       when 5
+        then updating_flight_details
+      when 6
         then break
     end
 
@@ -229,6 +236,74 @@ class Main
 
   end
 
+  def updating_flight_details
+      flight= show_flight_details
+      flight=get_new_flight_details(flight)
 
+    begin
+    flight_manager=Flight_manager.new
+       flight_manager.add_flight_xml(flight)
+    puts "Your flight has been updated successfully"
+    rescue
+        puts "System failed update your flight"
+    end
+  end
+
+  def get_new_flight_details(flight)
+
+
+    while true do
+       detail_no = show_details_to_choose
+       if (detail_no != 14) then new_value = insert_new_value   end
+       case detail_no
+         when 1 then flight.name = new_value
+         when 2 then flight.capacity = Integer(new_value)
+         when 3 then flight.departure = new_value
+         when 4 then flight.arrival = new_value
+         when 5 then flight.first_class_capacity = Integer(new_value)
+         when 6 then flight.economic_class_capacity = Integer(new_value)
+         when 7 then flight.business_class_capacity = Integer(new_value)
+         when 8 then flight.economic_class_price = Integer(new_value)
+         when 9 then flight.first_class_price = Integer(new_value)
+         when 10 then flight.business_class_price = Integer(new_value)
+         when 11 then flight.duration = Integer(new_value)
+         when 12 then flight.departure_time = Time.parse(new_value)
+         when 13 then flight.arrival_time = Time.parse(new_value)
+         when 14 then break
+       end
+  end
+
+    return flight
+  end
+
+  def show_details_to_choose
+    puts "Choose the detail you want to change:"
+    puts "1. Name of flight "
+    puts "2. Capacity of the airplane "
+    puts "3. Departure city "
+    puts "4. Arrival city"
+    puts "5. First class capacity of the airplane"
+    puts "6. Economic class capacity of the flight"
+    puts "7. Business class capacity of the flight "
+    puts "8. Economic class price of the flight"
+    puts "9. First class price of the flight"
+    puts "10. Business class price of the flight"
+    puts "11. Duration of the flight"
+    puts "12. Departure time of the flight"
+    puts "13. Arrival time of the flight"
+    puts "14. Exit"
+    detail_no_chosen= Integer(gets.chomp)
+    if (detail_no_chosen<1) or (detail_no_chosen>14)
+      puts "Insert correct detail number"
+      show_details_to_choose
+    else
+      return detail_no_chosen
+    end
+  end
+
+  def insert_new_value
+    puts "Insert the new value:"
+    return gets.chomp
+  end
 
 end
