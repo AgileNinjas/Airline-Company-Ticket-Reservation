@@ -30,14 +30,14 @@ class Main
   end
 
   def show_search_results(query)
-    flight_manager = Flight_manager.new
-    flight_manager.get_schedule
 
-    results = flight_manager.search(query)
+    #@flight_manager.get_schedule
+
+    results = @flight_manager.search(query)
 
 
     if results.length == 0
-       if flight_manager.route_exist(query) == true
+       if @flight_manager.route_exist(query) == true
         puts "There is no flight corresponding to your search parameters, but the searched route exist"
 
        else
@@ -68,8 +68,8 @@ class Main
   def show_details  flight_id
 
 
-    flight= @flight_factory.get_flight(flight_id)
-
+   # flight= @flight_factory.get_flight(flight_id)
+    flight = @flight_manager.get_flight_by_id flight_id
     if (flight == nil)
       puts "Flight id doesn't exists"
     else
@@ -275,8 +275,8 @@ class Main
       flight=get_new_flight_details(flight)
 
     begin
-    flight_manager=Flight_manager.new
-       flight_manager.add_flight_xml(flight)
+
+       @flight_manager.add_flight_xml(flight)
     puts "Your flight has been updated successfully"
     rescue
         puts "System failed update your flight"

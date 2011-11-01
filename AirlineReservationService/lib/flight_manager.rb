@@ -177,6 +177,17 @@ class Flight_manager
   end
 
 
+  def get_flight_by_id flight_id
+
+    flights.each { |flight|
+        if (flight.id == flight_id)
+          return flight
+        end
+    }
+    return nil
+
+  end
+
   end
 
 
