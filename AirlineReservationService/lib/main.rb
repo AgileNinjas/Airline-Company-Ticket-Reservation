@@ -95,10 +95,9 @@ class Main
     if (customer_details == nil)
       puts "Customer doesn't exists"
     else
-
-       puts "Customer id: "+customer_details[0].to_s
-       puts "Customer name: "+customer_details[1].to_s
-       puts "Customer passport: "+customer_details[2].to_s
+       puts "Customer id: "+customer_details.id.to_s
+       puts "Customer name: "+customer_details.name.to_s
+       puts "Customer passport: "+customer_details.passport.to_s
     end
   end
 
