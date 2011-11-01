@@ -61,6 +61,7 @@ class Customer_manager
 
        doc.root.insert_after(doc.elements["customer",customer],customer_el)
        File.open("../xmls/customer.xml", 'w') {|f| f.write(doc)}
+      @customers.push(customer)
      end
 
 

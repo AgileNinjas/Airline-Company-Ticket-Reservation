@@ -96,9 +96,9 @@ class Main
       puts "Customer doesn't exists"
     else
 
-       puts "Customer id: "+customer_details[0].to_s
-       puts "Customer name: "+customer_details[1].to_s
-       puts "Customer passport: "+customer_details[2].to_s
+       puts "Customer id: "+customer_details.id.to_s
+       puts "Customer name: "+customer_details.name.to_s
+       puts "Customer passport: "+customer_details.passport.to_s
     end
   end
 
@@ -107,28 +107,36 @@ class Main
 
     flight = @flight_factory.get_flight flight_id
 
-    puts "Choose one of the classes available:"
+       if (flight == nil)
+         puts "Invalid! Check the flight ID entered and try again:"
+         #show_main_menu
+         #return show_classes_available flight_id
+       else
 
-    class_types_available=[];
-      index = 1
-    if (flight.available_seats_economic >0)
-      puts index.to_s+". Economic class available    Price:"+flight.economic_class_price.to_s
-      index=index+1
-      class_types_available.push("economic")
-    end
+        puts "Choose one of the classes available:"
 
-    if (flight.available_seats_business >0 )
-      puts index.to_s+". Business class available    Price:"+flight.business_class_price.to_s
-      index=index+1
-      class_types_available.push("business")
-    end
+        class_types_available=[];
+          index = 1
+        if (flight.available_seats_economic >0)
+          puts index.to_s+". Economic class available    Price:"+flight.economic_class_price.to_s
+          index=index+1
+          class_types_available.push("economic")
+        end
 
-    if (flight.available_seats_first_class >0 )
-      puts index.to_s+". First class available    Price:"+flight.first_class_price.to_s
-      class_types_available.push("first")
-    end
+        if (flight.available_seats_business >0 )
+          puts index.to_s+". Business class available    Price:"+flight.business_class_price.to_s
+          index=index+1
+          class_types_available.push("business")
+        end
 
-    return class_types_available[Integer(gets.chomp) - 1]
+        if (flight.available_seats_first_class >0 )
+          puts index.to_s+". First class available    Price:"+flight.first_class_price.to_s
+          class_types_available.push("first")
+        end
+
+        return class_types_available[Integer(gets.chomp) - 1]
+
+       end
 
   end
 
@@ -158,9 +166,15 @@ class Main
     customer_passport_no = get_customer_passport
     reservation_manager = ReservationManager.new
     # refactor
-    customer = Customer.new(1,"John Doe",customer_passport_no)
-    reservation =  reservation_manager.add_new_reservation( customer ,@flight_factory.get_flight(flight_id),class_type)
+    customer =@customer_manager.get_customer_by_passport_number(customer_passport_no)
+
+    if (customer!=nil) then
+     reservation =  reservation_manager.add_new_reservation( customer ,@flight_factory.get_flight(flight_id),class_type)
     show_reservation_details reservation
+    else
+      puts "The passport entered doesn't correspond to a registered user"
+    end
+
   end
 
   def show_flight_details
@@ -331,9 +345,9 @@ class Main
         puts "Enter the passport:"
         customer_passport=Integer(gets.chomp)
 
-        customer_object=Customer_manager.new
-        customer=Customer.new(customer_object.create__customer_id,customer_name.to_s,customer_passport)
-        customer_object.add_customer_xml(customer)
+       # customer_object=Customer_manager.new
+        customer=Customer.new(@customer_manager.create__customer_id,customer_name.to_s,customer_passport)
+        @customer_manager.add_customer_xml(customer)
 
   end
 
