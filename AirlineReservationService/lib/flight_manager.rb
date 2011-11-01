@@ -60,6 +60,7 @@ class Flight_manager
   def create_flight(flight)
      add_flight_xml(flight)
      add_schedule(flight)
+     flights.push(flight)
   end
 
     def add_flight_xml (flight)
@@ -73,67 +74,66 @@ class Flight_manager
     name_el.text=flight.name
     doc.root[1]=name_el
 
-    capacity_el=Element.new "capacity"
-    capacity_el.text=flight.capacity
-    doc.root[2]=capacity_el
+
 
     departure_el=Element.new "departure"
     departure_el.text=flight.departure
-    doc.root[3]=departure_el
+    doc.root[2]=departure_el
 
     arrival_el=Element.new "arrival"
     arrival_el.text=flight.arrival
-    doc.root[4]=arrival_el
+    doc.root[3]=arrival_el
 
     first_class_capacity_el=Element.new "first_class_capacity"
     first_class_capacity_el.text=flight.first_class_capacity
-    doc.root[5]=first_class_capacity_el
+    doc.root[4]=first_class_capacity_el
 
     economic_class_capacity_el=Element.new "economic_class_capacity"
     economic_class_capacity_el.text=flight.economic_class_capacity
-    doc.root[6]=economic_class_capacity_el
+    doc.root[5]=economic_class_capacity_el
 
     business_class_capacity_el=Element.new "business_class_capacity"
     business_class_capacity_el.text=flight.business_class_capacity
-    doc.root[7]=business_class_capacity_el
+    doc.root[6]=business_class_capacity_el
 
 
 
     first_class_price_el=Element.new "first_class_price"
     first_class_price_el.text=flight.first_class_price
-    doc.root[8]=first_class_price_el
+    doc.root[7]=first_class_price_el
 
     economic_class_price_el=Element.new "economic_class_price"
     economic_class_price_el.text=flight.economic_class_price
-    doc.root[9]=economic_class_price_el
+    doc.root[8]=economic_class_price_el
 
     business_class_price_el=Element.new "business_class_price"
     business_class_price_el.text=flight.business_class_price
-    doc.root[10]=business_class_price_el
+    doc.root[9]=business_class_price_el
 
     duration_el=Element.new "duration"
     duration_el.text=flight.duration
-    doc.root[11]=duration_el
+    doc.root[10]=duration_el
 
     arrival_time_el=Element.new "arrival_time"
     arrival_time_el.text=flight.arrival_time
-    doc.root[12]=arrival_time_el
+    doc.root[11]=arrival_time_el
 
     departure_time_el=Element.new "departure_time"
     departure_time_el.text=flight.departure_time
-    doc.root[13]=departure_time_el
+    doc.root[12]=departure_time_el
 
     first_class_availability_el=Element.new "first_class_availability"
     first_class_availability_el.text=flight.available_seats_first_class
-    doc.root[14]=first_class_availability_el
+    doc.root[13]=first_class_availability_el
 
     economic_class_capacity_el=Element.new "economic_class_availability"
     economic_class_capacity_el.text=flight.available_seats_economic
-    doc.root[15]=economic_class_capacity_el
+    doc.root[14]=economic_class_capacity_el
 
     business_class_capacity_el=Element.new "business_class_availability"
     business_class_capacity_el.text=flight.available_seats_business
-    doc.root[16]=business_class_capacity_el
+    doc.root[15]=business_class_capacity_el
+
 
     File.open("../xmls/" + "flight_" + flight.id.to_s + ".xml", 'w') {|f| f.write(doc)}
     end
@@ -169,7 +169,7 @@ class Flight_manager
 
 
   def create_id
-    get_schedule
+
     if flights.length == 0
        1
     else

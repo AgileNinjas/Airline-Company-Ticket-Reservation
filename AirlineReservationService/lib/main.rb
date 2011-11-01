@@ -41,7 +41,7 @@ class Main
         puts "There is no flight corresponding to your search parameters, but the searched route exist"
 
        else
-         puts "There is no flight corresponding to your sear ch parameters and the searched route does not exist"
+         puts "There is no flight corresponding to your search parameters and the searched route does not exist"
        end
 
 
@@ -201,8 +201,6 @@ class Main
     puts "--------------------------------------"
     puts "Please enter the name of flight: "
     name = gets.chomp.downcase
-    puts "Please enter the capacity of the airplane: "
-    capacity = gets.chomp.downcase
     puts "Please enter the Departure city: "
     departure_city = gets.chomp.downcase
     puts "Please enter the Arrival city: "
@@ -227,10 +225,10 @@ class Main
     arrival_time = Time.parse(gets.chomp)
 
     begin
-    flight_manager = Flight_manager.new
-    flight=Flight.new(flight_manager.create_id, name , capacity  , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time, first_class_capacity ,economic_class_capacity,business_class_capacity)
 
-    flight_manager.create_flight(flight)
+    flight=Flight.new(@flight_manager.create_id, name , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time, first_class_capacity ,economic_class_capacity,business_class_capacity)
+
+    @flight_manager.create_flight(flight)
     puts "Your flight has been added successfully"
     rescue
         puts "System failed add your flight"

@@ -1,7 +1,7 @@
 class Flight
 
 
-attr_accessor :id , :capacity
+attr_accessor :id
 attr_accessor :first_class_capacity , :economic_class_capacity , :business_class_capacity
 attr_accessor :economic_class_price , :first_class_price   , :business_class_price
 attr_accessor :name , :departure , :arrival
@@ -9,11 +9,11 @@ attr_accessor :available_seats_business  ,:available_seats_economic , :available
 attr_accessor :duration ,:departure_time ,:arrival_time
 
 # def initialize  (id=1 , name="default" , capacity=120 , departure = "departure" , arrival= "arrival", first_class_capacity = 20,economic_class_capacity = 100,business_class_capacity = 0,economic_class_price = 100,first_class_price = 500,business_class_price = 200)
-   def initialize  (id, name , capacity , departure , arrival, first_class_capacity ,economic_class_capacity ,business_class_capacity,economic_class_price,first_class_price,business_class_price , duration , departure_time , arrival_time,first_class_availability ,economic_class_availability ,business_class_availability)
+   def initialize  (id, name , departure , arrival, first_class_capacity ,economic_class_capacity ,business_class_capacity,economic_class_price,first_class_price,business_class_price , duration , departure_time , arrival_time,first_class_availability ,economic_class_availability ,business_class_availability)
 
    @name = name
    @id = id
-   @capacity = capacity
+
 
    @first_class_capacity = first_class_capacity
    @economic_class_capacity = economic_class_capacity
