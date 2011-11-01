@@ -90,7 +90,7 @@ class Main
 
   def show_cust_details(passport)
 
-    customer_details = @customer_manager.get_all_customers(passport)
+    customer_details = @customer_manager.get_customer_by_passport_number(passport)
 
     if (customer_details == nil)
       puts "Customer doesn't exists"
@@ -189,7 +189,8 @@ class Main
     puts "** 5.Show customer details       **"
     puts "** 6.Update flight               **"
     puts "** 7.Check flight status         **"
-    puts "** 8.Exit                        **"
+    puts "** 8.Customer registration       **"
+    puts "** 9.Exit                        **"
     puts "***********************************"
     puts
     action=Integer(gets)
@@ -241,6 +242,19 @@ class Main
   end
 
 
+  def customer_registration
+        puts "Enter the name:"
+        customer_name = gets.chomp
+        puts "Enter the passport:"
+        customer_passport=Integer(gets.chomp)
+
+        customer_object=Customer_manager.new
+        customer=Customer.new(customer_object.create__customer_id,customer_name.to_s,customer_passport)
+        customer_object.add_customer_xml(customer)
+
+  end
+
+
 
 
   def show_interface
@@ -259,9 +273,11 @@ class Main
         then show_customer_details
       when 6
         then updating_flight_details
-       when 7
+      when 7
         then check_flight_status
       when 8
+        then customer_registration
+      when 9
         then break
     end
 

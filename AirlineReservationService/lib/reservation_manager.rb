@@ -61,11 +61,11 @@ class ReservationManager
   end
 
   def update_reservation_xml ()
-       doc = Document.new "<reservations></reservations>"
+    doc = Document.new "<reservations></reservations>"
     index = 0;
-        @reservations.each { |reservation|
+    @reservations.each { |reservation|
 
-          reservation_el =Element.new "reservation"
+    reservation_el =Element.new "reservation"
     customer_passport_el=Element.new "customer_passport"
     customer_passport_el.text=reservation.customer.passport
     reservation_el[0]=customer_passport_el
@@ -75,11 +75,11 @@ class ReservationManager
     reservation_el[1]=code_el
 
     flight_id_el=Element.new "flight_id"
-   flight_id_el.text=reservation.flight.id
+    flight_id_el.text=reservation.flight.id
     reservation_el[2]=flight_id_el
 
     class_type_el=Element.new "class_type"
-   class_type_el.text=reservation.class_type
+    class_type_el.text=reservation.class_type
     reservation_el[3]=class_type_el
 
     doc.root[index] = reservation_el
@@ -92,8 +92,8 @@ class ReservationManager
 
   def add_new_reservation(customer, flight , class_type="economic")
      reservation=  create_reservation(customer,flight,class_type)
-       update_reservation_xml()
-           return reservation
+     update_reservation_xml()
+          return reservation
   end
 
 end

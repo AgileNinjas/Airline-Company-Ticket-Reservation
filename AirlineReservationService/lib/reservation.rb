@@ -16,7 +16,7 @@ class Reservation
        o =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten;
        string  =  (0..7).map{ o[rand(o.length)]  }.join;
 
-       @confirmation_code = string
+         @confirmation_code = string
        else
          @confirmation_code = code
        end
