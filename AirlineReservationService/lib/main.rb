@@ -41,7 +41,7 @@ class Main
         puts "There is no flight corresponding to your search parameters, but the searched route exist"
 
        else
-         puts "There is no flight corresponding to your sear ch parameters and the searched route does not exist"
+         puts "There is no flight corresponding to your search parameters and the searched route does not exist"
        end
 
 
