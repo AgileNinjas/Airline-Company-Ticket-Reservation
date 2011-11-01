@@ -178,6 +178,80 @@ class Main
     show_search_results query
   end
 
+  def show_choose_type_of_user_menu
+    while 1
+    puts "***********************************"
+    puts "** Select the type of user :     **"
+    puts "** 1. Customer                   **"
+    puts "** 2. Airline Company            **"
+    puts "** 3. Exit                       **"
+    puts "***********************************"
+    puts
+    action=Integer(gets)
+    if action == 1 then
+      while 1
+      action_id = show_main_menu
+      case action_id
+      when 1
+        then show_search_interface
+      when 2
+        then show_flight_details
+      when 3
+        then reserve_flight
+      when 4
+        then show_customer_details
+      when 5
+        then break
+      end
+        end
+    end
+
+    if action == 2 then
+    while 1
+    action_id=show_company_menu()
+    case action_id
+      when 1
+        then show_adding_flight
+      when 2
+        then show_customer_details
+      when 3
+        then updating_flight_details
+      when 4
+        then check_flight_status
+      when 5
+        then break
+    end
+
+    end
+    end
+
+    if action == 3 then
+      break
+    end
+
+    if action!=1 and action!=2 and action!=3 then
+      puts "Enter a correct choice"
+      show_choose_type_of_user_menu
+    end
+
+    end
+  end
+
+  def show_company_menu
+    puts
+    puts "***********************************"
+    puts "** Select from the menu below :  **"
+    puts "** 1.Add flight                  **"
+    puts "** 2.Show customer details       **"
+    puts "** 3.Update flight               **"
+    puts "** 4.Check flight status         **"
+    puts "** 5.Exit                        **"
+    puts "***********************************"
+    puts
+    action=Integer(gets)
+
+  end
+
   def show_main_menu
     puts
     puts "***********************************"
@@ -185,12 +259,8 @@ class Main
     puts "** 1.Search for a flight         **"
     puts "** 2.Show flight details         **"
     puts "** 3.Reserve flight              **"
-    puts "** 4.Add flight                  **"
-    puts "** 5.Show customer details       **"
-    puts "** 6.Update flight               **"
-    puts "** 7.Check flight status         **"
-    puts "** 8.Customer registration       **"
-    puts "** 9.Exit                        **"
+    puts "** 4.Show customer details       **"
+    puts "** 5.Exit                        **"
     puts "***********************************"
     puts
     action=Integer(gets)
@@ -258,32 +328,7 @@ class Main
 
 
   def show_interface
-    while 1
-    action_id=show_main_menu()
-    case action_id
-      when 1
-        then show_search_interface
-      when 2
-        then show_flight_details
-      when 3
-        then reserve_flight
-      when 4
-        then show_adding_flight
-      when 5
-        then show_customer_details
-      when 6
-        then updating_flight_details
-      when 7
-        then check_flight_status
-      when 8
-        then customer_registration
-      when 9
-        then break
-    end
-
-    end
-
-
+    show_choose_type_of_user_menu
   end
 
   def updating_flight_details
