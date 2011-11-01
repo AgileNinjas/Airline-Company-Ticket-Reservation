@@ -159,8 +159,14 @@ class Main
     reservation_manager = ReservationManager.new
     # refactor
     customer =@customer_manager.get_customer_by_passport_number(customer_passport_no)
+
+    if (customer!=nil) then
      reservation =  reservation_manager.add_new_reservation( customer ,@flight_factory.get_flight(flight_id),class_type)
     show_reservation_details reservation
+    else
+      puts "The passport entered doesn't correspond to a registered user"
+    end
+
   end
 
   def show_flight_details
