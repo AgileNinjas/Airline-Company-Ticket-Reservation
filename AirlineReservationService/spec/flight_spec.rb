@@ -4,7 +4,7 @@ require "../lib/reservation"
 
 describe "Flight" do
 
-  subject {Flight.new(1 ,"default" , 120 , "departure" ,"arrival",0,100,20,100,500, 200,"5",Time.now, Time.now,0,100,20)}
+  subject {Flight.new(1 ,"default", "departure" ,"arrival",0,100,20,100,500, 200,"5",Time.now, Time.now,0,100,20)}
   let(:customer) {mock('Customer')}
 
   
@@ -13,10 +13,6 @@ describe "Flight" do
     subject.id.should be_a_kind_of(Integer)
   end
 
-  it "flight should have a capacity which is a positive integer between 20 and 400" do
-    (20..400).should include(subject.capacity)
-    subject.capacity.should be_a_kind_of(Integer)
-  end
 
   it "flight should have a first class capacity which is an positive integer if it exists on the flight and 0 otherwise" do
      subject.first_class_capacity.should >= 0
@@ -33,9 +29,6 @@ describe "Flight" do
     subject.business_class_capacity.should be_a_kind_of(Integer)
   end
 
-   it "all seats of the flight should be either on economic , first class or business class" do
-    (subject.economic_class_capacity + subject.first_class_capacity + subject.business_class_capacity).should == subject.capacity
-    end
 
   it "flight should have a economic class price" do
     subject.economic_class_price.should >= 0
@@ -91,7 +84,7 @@ describe "Flight" do
   end
 
   it "should have a method named get_income that returns the total income of the flight" do
-    flight = Flight.new(1 ,"default" , 120 , "departure" ,"arrival",0,100,20,100,500, 200,"5",Time.now, Time.now,0,90,20)
+    flight = Flight.new(1 ,"default" , "departure" ,"arrival",0,100,20,100,500, 200,"5",Time.now, Time.now,0,90,20)
     flight.get_income.should == 1000
   end
 

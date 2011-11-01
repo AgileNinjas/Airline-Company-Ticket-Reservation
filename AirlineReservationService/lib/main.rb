@@ -200,8 +200,6 @@ class Main
     puts "--------------------------------------"
     puts "Please enter the name of flight: "
     name = gets.chomp.downcase
-    puts "Please enter the capacity of the airplane: "
-    capacity = gets.chomp.downcase
     puts "Please enter the Departure city: "
     departure_city = gets.chomp.downcase
     puts "Please enter the Arrival city: "
@@ -227,7 +225,7 @@ class Main
 
     begin
 
-    flight=Flight.new(@flight_manager.create_id, name , capacity  , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time, first_class_capacity ,economic_class_capacity,business_class_capacity)
+    flight=Flight.new(@flight_manager.create_id, name , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time, first_class_capacity ,economic_class_capacity,business_class_capacity)
 
     @flight_manager.create_flight(flight)
     puts "Your flight has been added successfully"

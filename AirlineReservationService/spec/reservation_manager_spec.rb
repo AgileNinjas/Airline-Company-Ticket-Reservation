@@ -8,7 +8,7 @@ describe "Reservation Manager" do
    let(:customer) {mock('Customer')}
    let(:flight) {mock('Flight', :search_available_seats => true, :update_available_seats => true)}
    let(:full_flight) {mock ('Flight', :search_available_seats => false, :update_available_seats => true)}
-   let(:flight11)  { Flight.new(1, "default1" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now) }
+   let(:flight11)  { Flight.new(1, "default1" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now) }
 
   it "should have a method named create_reservation that return reservation object" do
      subject.create_reservation(customer,flight).should be_an_instance_of(Reservation)
