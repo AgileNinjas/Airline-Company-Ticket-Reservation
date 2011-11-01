@@ -187,11 +187,13 @@ class Main
     puts "** 3. Exit                       **"
     puts "***********************************"
     puts
-    action=Integer(gets)
-    if action == 1 then
+
+    action = gets
+
+    if action.to_i == 1 then
       while 1
       action_id = show_main_menu
-      case action_id
+      case action_id.to_i
       when 1
         then show_search_interface
       when 2
@@ -204,34 +206,40 @@ class Main
         then customer_registration
       when 6
         then break
+        else
+          puts 'Invalid option. Please select again'
+          show_main_menu
       end
         end
-    end
 
-    if action == 2 then
+
+   elsif action.to_i == 2 then
     while 1
-    action_id=show_company_menu()
-    case action_id
+    action_id= show_company_menu()
+    case action_id.to_i
       when 1
-        then show_adding_flight
-      when 2
         then show_customer_details
+      when 2
+         then check_flight_status
       when 3
-        then updating_flight_details
+           then show_adding_flight
       when 4
-        then check_flight_status
+           then updating_flight_details
       when 5
         then break
+
+        else
+          puts 'Invalid option. Please select again'
+          show_main_menu
     end
 
     end
-    end
 
-    if action == 3 then
-      break
-    end
+    elsif action.to_i == 3 then
+      puts 'Thanks for using our services '
+      exit
 
-    if action!=1 and action!=2 and action!=3 then
+   else
       puts "Enter a correct choice"
       show_choose_type_of_user_menu
     end
@@ -243,14 +251,14 @@ class Main
     puts
     puts "***********************************"
     puts "** Select from the menu below :  **"
-    puts "** 1.Add flight                  **"
-    puts "** 2.Show customer details       **"
-    puts "** 3.Update flight               **"
-    puts "** 4.Check flight status         **"
+    puts "** 1.Show customer details       **"
+    puts "** 2.Check flight status         **"
+    puts "** 3.Add flight                  **"
+    puts "** 4.Update flight               **"
     puts "** 5.Exit                        **"
     puts "***********************************"
     puts
-    action=Integer(gets)
+    action=gets
 
   end
 
@@ -266,7 +274,7 @@ class Main
     puts "** 6.Exit                        **"
     puts "***********************************"
     puts
-    action=Integer(gets)
+    action=gets
   end
 
   def show_adding_flight
@@ -278,18 +286,20 @@ class Main
     departure_city = gets.chomp.downcase
     puts "Please enter the Arrival city: "
     arrival_city = gets.chomp.downcase
-    puts "Please enter the first class capacity of the airplane: "
-    first_class_capacity = Integer(gets.chomp)
     puts "Please enter the economic class capacity of the flight: "
     economic_class_capacity = Integer(gets.chomp)
-    puts "Please enter the business class capacity of the flight: "
-    business_class_capacity = Integer(gets.chomp)
     puts "Please enter the economic class price of the flight: "
     economic_class_price = Integer(gets.chomp)
-    puts "Please enter the first class price of the flight: "
-    first_class_price = Integer(gets.chomp)
+    puts "Please enter the business class capacity of the flight: "
+    business_class_capacity = Integer(gets.chomp)
     puts "Please enter the business class price of the flight : "
     business_class_price  = Integer(gets.chomp)
+    puts "Please enter the first class capacity of the airplane: "
+    first_class_capacity = Integer(gets.chomp)
+    puts "Please enter the first class price of the flight: "
+    first_class_price = Integer(gets.chomp)
+
+
     puts "Please enter the duration of the flight: "
     duration = Integer(gets.chomp)
     puts "Please enter the departure time of the flight: "
@@ -340,8 +350,8 @@ class Main
 
     begin
 
-       @flight_manager.add_flight_xml(flight)
-    puts "Your flight has been updated successfully"
+    @flight_manager.add_flight_xml(flight)
+    puts "Your changes has been updated successfully"
     rescue
         puts "System failed update your flight"
     end
@@ -352,22 +362,24 @@ class Main
 
     while true do
        detail_no = show_details_to_choose
-       if (detail_no != 14) then new_value = insert_new_value   end
+       if (detail_no != 13) then new_value = insert_new_value   end
        case detail_no
          when 1 then flight.name = new_value
-         when 2 then flight.capacity = Integer(new_value)
-         when 3 then flight.departure = new_value
-         when 4 then flight.arrival = new_value
-         when 5 then flight.first_class_capacity = Integer(new_value)
-         when 6 then flight.economic_class_capacity = Integer(new_value)
-         when 7 then flight.business_class_capacity = Integer(new_value)
-         when 8 then flight.economic_class_price = Integer(new_value)
-         when 9 then flight.first_class_price = Integer(new_value)
-         when 10 then flight.business_class_price = Integer(new_value)
-         when 11 then flight.duration = Integer(new_value)
-         when 12 then flight.departure_time = Time.parse(new_value)
-         when 13 then flight.arrival_time = Time.parse(new_value)
-         when 14 then break
+         when 2 then flight.departure = new_value
+         when 3 then flight.arrival = new_value
+         when 4 then flight.first_class_capacity = Integer(new_value)
+         when 5 then flight.economic_class_capacity = Integer(new_value)
+         when 6 then flight.business_class_capacity = Integer(new_value)
+         when 7 then flight.economic_class_price = Integer(new_value)
+         when 8 then flight.first_class_price = Integer(new_value)
+         when 9 then flight.business_class_price = Integer(new_value)
+         when 10 then flight.duration = Integer(new_value)
+         when 11 then flight.departure_time = Time.parse(new_value)
+         when 12 then flight.arrival_time = Time.parse(new_value)
+         when 13 then break
+         else
+          puts 'Invalid option. Please select again'
+          show_details_to_choose
        end
   end
 
@@ -376,24 +388,28 @@ class Main
 
   def show_details_to_choose
     puts "Choose the detail you want to change:"
+    puts "***********************************************************"
     puts "1. Name of flight "
-    puts "2. Capacity of the airplane "
-    puts "3. Departure city "
-    puts "4. Arrival city"
-    puts "5. First class capacity of the airplane"
-    puts "6. Economic class capacity of the flight"
-    puts "7. Business class capacity of the flight "
-    puts "8. Economic class price of the flight"
-    puts "9. First class price of the flight"
-    puts "10. Business class price of the flight"
-    puts "11. Duration of the flight"
-    puts "12. Departure time of the flight"
-    puts "13. Arrival time of the flight"
-    puts "14. Exit"
+    puts "2. Departure city "
+    puts "3. Arrival city"
+    puts "4. First class capacity of the airplane"
+    puts "5. Economic class capacity of the flight"
+    puts "6. Business class capacity of the flight "
+    puts "7. Economic class price of the flight"
+    puts "8. First class price of the flight"
+    puts "9. Business class price of the flight"
+    puts "10. Duration of the flight"
+    puts "11. Departure time of the flight(dd-mm-yyyy hh:mm)"
+    puts "12. Arrival time of the flight(dd-mm-yyyy hh:mm)"
+    puts "***********************************************************"
+    puts "13. Save your changes"
+    puts "***********************************************************"
     detail_no_chosen= Integer(gets.chomp)
-    if (detail_no_chosen<1) or (detail_no_chosen>14)
-      puts "Insert correct detail number"
+    if (detail_no_chosen<1) or (detail_no_chosen>13)
+      puts "!!!!!!!!!!!! Insert correct choice (between 1-13) !!!!!!!!!!!"
+      puts "*******************************************"
       show_details_to_choose
+
     else
       return detail_no_chosen
     end
@@ -402,13 +418,14 @@ class Main
   def insert_new_value
     puts "Insert the new value:"
     return gets.chomp
+    system("clear")
   end
 
   def show_list_of_flights
 
     puts "Available flights:"
     @flight_manager.flights.each { |flight|
-       puts "Flight id:"+flight.id.to_s+"    flight name:"+flight.name
+    puts "Flight id:"+flight.id.to_s+"    flight name:"+flight.name
     }
     puts ""
 
@@ -431,4 +448,4 @@ class Main
     show_status_for_flight flight_id
   end
 
-end
+    end
