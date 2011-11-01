@@ -43,7 +43,7 @@ class ReservationManager
 
     @reservations=[]
     doc.elements.each("reservations/reservation") { |element|
-    customer_passport = element.elements["customer_passport"].text
+    customer_passport = Integer(element.elements["customer_passport"].text)
     code = element.elements["code"].text
     flight_id = element.elements["flight_id"].text
     class_type = element.elements["class_type"].text
@@ -51,10 +51,10 @@ class ReservationManager
     customer_manager = Customer_manager.new
     customer = customer_manager.get_customer_by_passport_number(customer_passport)
 
-        flight = FlightFactory.new.get_flight(flight_id)
+    flight = FlightFactory.new.get_flight(flight_id)
 
-        create_reservation(customer,flight,class_type,code)
-       # reservation =  create_reservation ()
+    create_reservation(customer,flight,class_type,code)
+    # reservation =  create_reservation ()
 
     }
 

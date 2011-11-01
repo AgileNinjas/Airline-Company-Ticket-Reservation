@@ -96,9 +96,9 @@ class Main
       puts "Customer doesn't exists"
     else
 
-       puts "Customer id: "+customer_details[0].to_s
-       puts "Customer name: "+customer_details[1].to_s
-       puts "Customer passport: "+customer_details[2].to_s
+       puts "Customer id: "+customer_details.id.to_s
+       puts "Customer name: "+customer_details.name.to_s
+       puts "Customer passport: "+customer_details.passport.to_s
     end
   end
 
@@ -158,8 +158,8 @@ class Main
     customer_passport_no = get_customer_passport
     reservation_manager = ReservationManager.new
     # refactor
-    customer = Customer.new(1,"John Doe",customer_passport_no)
-    reservation =  reservation_manager.add_new_reservation( customer ,@flight_factory.get_flight(flight_id),class_type)
+    customer =@customer_manager.get_customer_by_passport_number(customer_passport_no)
+     reservation =  reservation_manager.add_new_reservation( customer ,@flight_factory.get_flight(flight_id),class_type)
     show_reservation_details reservation
   end
 
@@ -321,9 +321,9 @@ class Main
         puts "Enter the passport:"
         customer_passport=Integer(gets.chomp)
 
-        customer_object=Customer_manager.new
-        customer=Customer.new(customer_object.create__customer_id,customer_name.to_s,customer_passport)
-        customer_object.add_customer_xml(customer)
+       # customer_object=Customer_manager.new
+        customer=Customer.new(@customer_manager.create__customer_id,customer_name.to_s,customer_passport)
+        @customer_manager.add_customer_xml(customer)
 
   end
 
