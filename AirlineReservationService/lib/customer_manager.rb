@@ -9,15 +9,27 @@ class Customer_manager
 
   def initialize
     @customers=[]
-
+    get_all_customers()
   end
 
+
   #def add_customer(customer)
-  #  @customers.push(customer)
+  #@customer.push(customer)
   #end
 
 
-  def get_all_customers(passport)
+ def get_customer_by_passport_number(passport)
+    @customers.each {|customer|
+
+      if (customer.passport==passport) then
+        return customer
+      end
+      }
+      return nil
+ end
+
+
+  def get_all_customers
     file = File.new( "../xmls/customer.xml" )
     doc = REXML::Document.new file
 
@@ -27,12 +39,8 @@ class Customer_manager
     name = element.elements["name"].text
     customer_passport=Integer(element.elements["passport"].text)
 
-    if (customer_passport==passport)
-        @customers.push(id)
-        @customers.push(name)
-        @customers.push(customer_passport)
-    return @customers
-    end
+    customer = Customer.new(id,name,customer_passport)
+    @customers.push(customer)
 
     }
 
@@ -56,33 +64,14 @@ class Customer_manager
      end
 
 
+  def create__customer_id
 
-
-
-  #def get_customer_by_passport_number(passport_number)
-  #
-  #customers.each {|customer|
-  #if(customer.passport==passport_number)
-  #    return customer
-  #end
-  #}
-  #
-  #return nil
-  #
-  #end
-
-
-  def get_customer_details(passport)
-        begin
-
-     xml_customer_details="../xmls/customer.xml"
-     xml_doc = Document.new File.new( xml_customer_details)
-
-
+    if customers.length == 0
+       return 1
+    else
+       return customers[customers.length-1].id + 1
+    end
   end
-
 
 end
 
-
- end
