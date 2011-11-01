@@ -60,6 +60,7 @@ class Flight_manager
   def create_flight(flight)
      add_flight_xml(flight)
      add_schedule(flight)
+     flights.push(flight)
   end
 
     def add_flight_xml (flight)

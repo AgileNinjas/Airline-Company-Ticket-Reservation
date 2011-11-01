@@ -230,10 +230,10 @@ class Main
     arrival_time = Time.parse(gets.chomp)
 
     begin
-    flight_manager = Flight_manager.new
-    flight=Flight.new(flight_manager.create_id, name , capacity  , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time, first_class_capacity ,economic_class_capacity,business_class_capacity)
 
-    flight_manager.create_flight(flight)
+    flight=Flight.new(@flight_manager.create_id, name , capacity  , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time, first_class_capacity ,economic_class_capacity,business_class_capacity)
+
+    @flight_manager.create_flight(flight)
     puts "Your flight has been added successfully"
     rescue
         puts "System failed add your flight"
