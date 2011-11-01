@@ -109,8 +109,8 @@ class Main
 
        if (flight == nil)
          puts "Invalid! Check the flight ID entered and try again:"
-         show_main_menu
-
+         #show_main_menu
+         #return show_classes_available flight_id
        else
 
         puts "Choose one of the classes available:"
