@@ -4,7 +4,7 @@ require "../lib/reservation"
 
 describe "Flight" do
 
-  subject {Flight.new(1 ,"default" , 120 , "departure" ,"arrival",0,100,20,100,500, 200,"5",Time.now, Time.now)}
+  subject {Flight.new(1 ,"default" , 120 , "departure" ,"arrival",0,100,20,100,500, 200,"5",Time.now, Time.now,0,100,20)}
   let(:customer) {mock('Customer')}
 
   
@@ -88,6 +88,11 @@ describe "Flight" do
       no_of_seats = subject.available_seats_economic
       subject.update_available_seats reservation
       subject.available_seats_economic.should == no_of_seats - 1
+  end
+
+  it "should have a method named get_income that returns the total income of the flight" do
+    flight = Flight.new(1 ,"default" , 120 , "departure" ,"arrival",0,100,20,100,500, 200,"5",Time.now, Time.now,0,90,20)
+    flight.get_income.should == 1000
   end
 
 

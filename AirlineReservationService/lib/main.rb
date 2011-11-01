@@ -9,6 +9,7 @@ require "../lib/customer"
 class Main
 
   def initialize
+    @flight_manager = Flight_manager.new
     @flight_factory = FlightFactory.new
     @customer_manager = Customer_manager.new
   end
@@ -154,7 +155,7 @@ class Main
   def reserve_flight
     flight_id = get_flight_id
     class_type = show_classes_available flight_id
-    customer_passport_no = get_customer_passport_no
+    customer_passport_no = get_customer_passport
     reservation_manager = ReservationManager.new
     # refactor
     customer = Customer.new(1,"John Doe",customer_passport_no)
@@ -187,7 +188,8 @@ class Main
     puts "** 4.Add flight                  **"
     puts "** 5.Show customer details       **"
     puts "** 6.Update flight               **"
-    puts "** 7.Exit                        **"
+    puts "** 7.Check flight status         **"
+    puts "** 8.Exit                        **"
     puts "***********************************"
     puts
     action=Integer(gets)
@@ -225,7 +227,7 @@ class Main
 
     begin
     flight_manager = Flight_manager.new
-    flight=Flight.new(flight_manager.create_id, name , capacity  , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time)
+    flight=Flight.new(flight_manager.create_id, name , capacity  , departure_city , arrival_city, first_class_capacity ,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price ,duration,departure_time,arrival_time, first_class_capacity ,economic_class_capacity,business_class_capacity)
 
     flight_manager.create_flight(flight)
     puts "Your flight has been added successfully"
@@ -259,7 +261,9 @@ class Main
         then show_customer_details
       when 6
         then updating_flight_details
-      when 7
+       when 7
+        then check_flight_status
+      when 8
         then break
     end
 
@@ -336,6 +340,33 @@ class Main
   def insert_new_value
     puts "Insert the new value:"
     return gets.chomp
+  end
+
+  def show_list_of_flights
+
+    puts "Available flights:"
+    @flight_manager.flights.each { |flight|
+       puts "Flight id:"+flight.id.to_s+"    flight name:"+flight.name
+    }
+    puts ""
+
+  end
+
+  def show_status_for_flight flight_id
+    flight = @flight_factory.get_flight flight_id
+    puts "Status of the flight :"+flight.name
+    puts "Departure city: "+flight.departure+ "   Arrival city: "+flight.arrival
+    puts "Departure date: "+flight.departure_time.to_s
+    puts "Available seats on economic class: "+flight.available_seats_economic.to_s+"  Reserved seats: "+(flight.economic_class_capacity - flight.available_seats_economic).to_s
+    puts "Available seats on business class: "+flight.available_seats_business.to_s+"  Reserved seats: "+(flight.business_class_capacity - flight.available_seats_business).to_s
+    puts "Available seats on first class: "+flight.available_seats_first_class.to_s+"  Reserved seats: "+(flight.first_class_capacity - flight.available_seats_first_class).to_s
+    puts "Total income from the flight: "+flight.get_income.to_s
+  end
+
+  def check_flight_status
+    show_list_of_flights
+    flight_id = get_flight_id
+    show_status_for_flight flight_id
   end
 
 end

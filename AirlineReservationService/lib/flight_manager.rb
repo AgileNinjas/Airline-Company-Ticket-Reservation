@@ -15,7 +15,7 @@ class Flight_manager
     file = File.new( "../xmls/schedule.xml" )
     doc = REXML::Document.new file
 
-    #get_schedule
+    get_schedule
 
     XPath.each( doc, "//flight") do |element|
          @flight_ids.push(element.elements["id"].text)
@@ -123,13 +123,13 @@ class Flight_manager
     departure_time_el.text=flight.departure_time
     doc.root[13]=departure_time_el
 
-         first_class_availability_el=Element.new "first_class_availability"
-         first_class_availability_el.text=flight.available_seats_first_class
-         doc.root[14]=first_class_availability_el
+    first_class_availability_el=Element.new "first_class_availability"
+    first_class_availability_el.text=flight.available_seats_first_class
+    doc.root[14]=first_class_availability_el
 
-          economic_class_capacity_el=Element.new "economic_class_availability"
-         economic_class_capacity_el.text=flight.available_seats_economic
-         doc.root[15]=economic_class_capacity_el
+    economic_class_capacity_el=Element.new "economic_class_availability"
+    economic_class_capacity_el.text=flight.available_seats_economic
+    doc.root[15]=economic_class_capacity_el
 
           business_class_capacity_el=Element.new "business_class_availability"
          business_class_capacity_el.text=flight.available_seats_business
