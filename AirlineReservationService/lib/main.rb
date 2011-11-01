@@ -107,28 +107,36 @@ class Main
 
     flight = @flight_factory.get_flight flight_id
 
-    puts "Choose one of the classes available:"
+       if (flight == nil)
+         puts "Invalid! Check the flight ID entered and try again:"
+         show_main_menu
 
-    class_types_available=[];
-      index = 1
-    if (flight.available_seats_economic >0)
-      puts index.to_s+". Economic class available    Price:"+flight.economic_class_price.to_s
-      index=index+1
-      class_types_available.push("economic")
-    end
+       else
 
-    if (flight.available_seats_business >0 )
-      puts index.to_s+". Business class available    Price:"+flight.business_class_price.to_s
-      index=index+1
-      class_types_available.push("business")
-    end
+        puts "Choose one of the classes available:"
 
-    if (flight.available_seats_first_class >0 )
-      puts index.to_s+". First class available    Price:"+flight.first_class_price.to_s
-      class_types_available.push("first")
-    end
+        class_types_available=[];
+          index = 1
+        if (flight.available_seats_economic >0)
+          puts index.to_s+". Economic class available    Price:"+flight.economic_class_price.to_s
+          index=index+1
+          class_types_available.push("economic")
+        end
 
-    return class_types_available[Integer(gets.chomp) - 1]
+        if (flight.available_seats_business >0 )
+          puts index.to_s+". Business class available    Price:"+flight.business_class_price.to_s
+          index=index+1
+          class_types_available.push("business")
+        end
+
+        if (flight.available_seats_first_class >0 )
+          puts index.to_s+". First class available    Price:"+flight.first_class_price.to_s
+          class_types_available.push("first")
+        end
+
+        return class_types_available[Integer(gets.chomp) - 1]
+
+       end
 
   end
 
