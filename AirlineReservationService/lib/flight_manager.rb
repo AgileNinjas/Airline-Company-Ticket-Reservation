@@ -29,11 +29,11 @@ class Flight_manager
   def get_schedule
     file = File.new( "../xmls/schedule.xml" )
     doc = REXML::Document.new file
-      @flights=[]
+    @flights=[]
     flight_factory = FlightFactory.new
     doc.elements.each("schedule/flight") { |element|
-      flight_id = Integer(element.elements["id"].text)
-      add_flight(flight_factory.get_flight(flight_id ))
+    flight_id = Integer(element.elements["id"].text)
+    add_flight(flight_factory.get_flight(flight_id ))
     }
   end
 

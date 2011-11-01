@@ -89,19 +89,15 @@ class Main
 
   def show_cust_details(passport)
 
-    customer_details = @customer_manager.get_customer_by_passport_number(passport)
-    #customer_details = @customer_manager.get_customer_by_passport_number(passport)
-
-    puts customer_details
+    customer_details = @customer_manager.get_all_customers(passport)
 
     if (customer_details == nil)
       puts "Customer doesn't exists"
     else
-     puts "hi"
-    #puts "Customer id is: "+customer_details.id
-    #puts "Customer name is: "+customer_details.name
-    puts "Customer passport number is: "+customer_details.passport
 
+       puts "Customer id: "+customer_details[0].to_s
+       puts "Customer name: "+customer_details[1].to_s
+       puts "Customer passport: "+customer_details[2].to_s
     end
   end
 
@@ -114,7 +110,7 @@ class Main
 
     class_types_available=[];
       index = 1
-    if (flight.available_seats_economic > 0 )
+    if (flight.available_seats_economic >0)
       puts index.to_s+". Economic class available    Price:"+flight.economic_class_price.to_s
       index=index+1
       class_types_available.push("economic")
