@@ -20,11 +20,11 @@ describe "My behaviour" do
   end
 
   context "searching for flights" do
-     let(:flight1)  { Flight.new(1, "default1" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now) }
-     let(:flight2)  { Flight.new(2, "default2" , 100  , "paris" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now)  }
-     let(:flight3)  { Flight.new(3, "default3" , 100  , "munich" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now)  }
-     let(:flight4)  { Flight.new(4, "default4" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now) }
-     let(:flight5)  { Flight.new(5, "default5" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.parse("20-11-2011 23:00") ,Time.now) }
+     let(:flight1)  { Flight.new(1, "default1" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now, 100 ,200 ,20) }
+     let(:flight2)  { Flight.new(2, "default2" , 100  , "paris" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now, 100 ,200 ,20)  }
+     let(:flight3)  { Flight.new(3, "default3" , 100  , "munich" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now, 100 ,200 ,20)  }
+     let(:flight4)  { Flight.new(4, "default4" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now, 100 ,200 ,20) }
+     let(:flight5)  { Flight.new(5, "default5" , 100  , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.parse("20-11-2011 23:00") ,Time.now, 100 ,200 ,20) }
 
     before do
       subject.add_flight(flight1)
@@ -72,7 +72,7 @@ describe "My behaviour" do
 
    it "should be able to add new flight"do
       my_subject  =Flight_manager.new
-      flight=Flight.new(my_subject.create_id, "default1" , 100  , "sari" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.parse("20-11-2011 17:00") ,Time.parse("20-11-2011 23:00"))
+      flight=Flight.new(my_subject.create_id, "default1" , 100  , "sari" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.parse("20-11-2011 17:00") ,Time.parse("20-11-2011 23:00"), 100 ,200 ,20)
       my_subject.create_flight(flight)
       query =  Query.new("sari","london",Time.parse("20-11-2011 17:00"))
       my_subject.get_schedule
@@ -82,7 +82,7 @@ describe "My behaviour" do
 
   it "should create new ID for a new flight which is lastID + 1"do
       my_subject  =Flight_manager.new
-      flight=Flight.new(my_subject.create_id, "default1" , 100  , "shiraz" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.parse("20-11-2011 17:00") ,Time.parse("20-11-2011 23:00"))
+      flight=Flight.new(my_subject.create_id, "default1" , 100  , "shiraz" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.parse("20-11-2011 17:00") ,Time.parse("20-11-2011 23:00"), 100 ,200 ,20)
       my_subject.create_flight(flight)
       new_id= my_subject.create_id
       new_id.should == flight.id + 1

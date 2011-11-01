@@ -24,12 +24,17 @@ class FlightFactory
      first_class_capacity  = Integer(xml_doc.root.elements["first_class_capacity"].text)
      economic_class_capacity  = Integer(xml_doc.root.elements["economic_class_capacity"].text)
      business_class_capacity  = Integer(xml_doc.root.elements["business_class_capacity"].text)
+
      economic_class_price  = Integer(xml_doc.root.elements["economic_class_price"].text)
      first_class_price  = Integer(xml_doc.root.elements["first_class_price"].text)
      business_class_price  = Integer(xml_doc.root.elements["business_class_price"].text)
 
+      first_class_availability  = Integer(xml_doc.root.elements["first_class_availability"].text)
+     economic_class_availability  = Integer(xml_doc.root.elements["economic_class_availability"].text)
+     business_class_availability  = Integer(xml_doc.root.elements["business_class_availability"].text)
+
                              #id, name , capacity , departure , arrival, first_class_capacity ,economic_class_capacity ,business_class_capacity,economic_class_price,first_class_price,business_class_price , duration , departure_time , arrival_time)
-     return Flight.new(flight_id,flight_name,flight_capacity,flight_departure,flight_arrival,first_class_capacity,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price,flight_duration,flight_departure_time,flight_arrival_time)
+     return Flight.new(flight_id,flight_name,flight_capacity,flight_departure,flight_arrival,first_class_capacity,economic_class_capacity,business_class_capacity,economic_class_price,first_class_price,business_class_price,flight_duration,flight_departure_time,flight_arrival_time,first_class_availability,economic_class_availability,business_class_availability)
 
     rescue
       return nil
