@@ -31,4 +31,4 @@
  </customer>
 
 
-</customer_details>
+<customer><id>6</id><name>mircea</name><passport>2334</passport></customer></customer_details>

@@ -201,6 +201,8 @@ class Main
       when 4
         then show_customer_details
       when 5
+        then customer_registration
+      when 6
         then break
       end
         end
@@ -260,7 +262,8 @@ class Main
     puts "** 2.Show flight details         **"
     puts "** 3.Reserve flight              **"
     puts "** 4.Show customer details       **"
-    puts "** 5.Exit                        **"
+    puts "** 5.Customer registration       **"
+    puts "** 6.Exit                        **"
     puts "***********************************"
     puts
     action=Integer(gets)
