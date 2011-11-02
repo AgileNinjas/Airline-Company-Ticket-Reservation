@@ -46,12 +46,13 @@ class Main
 
 
     else
-      puts "Results to your search ordered by price and duration are:"
+      puts "Results of your search ordered by price and duration:"
       puts "---------------------------------------------------------"
       results.each {|flight| puts "Flight: " +flight.id.to_s
       puts "Economic price: " +flight.economic_class_price.to_s  + " pounds"
       puts "Duration: "+ flight.duration.to_s  + " hours"
       puts "Departure date: "+flight.departure_time.to_s
+      puts "Arrival date: "+flight.arrival_time.to_s
       puts "---------------"}
 
     end
@@ -60,9 +61,9 @@ class Main
 
 
   def get_flight_id
-    puts "*******  Search a flight ********"
+    puts "**************************"
     puts "Please enter the flight id:"
-    flight_id = Integer(gets.chomp)
+    flight_id = gets.chomp.to_i
   end
 
   def show_details  flight_id
@@ -134,7 +135,12 @@ class Main
           class_types_available.push("first")
         end
 
-        return class_types_available[Integer(gets.chomp) - 1]
+        selected_class = gets.chomp.to_i
+        if (selected_class<1) or (selected_class > 3) then
+          puts "Invalid option. Insert another value"
+          return show_classes_available flight_id
+        end
+        return class_types_available[selected_class - 1]
 
        end
 
@@ -143,17 +149,24 @@ class Main
   def show_reservation_details reservation
 
     flight = reservation.flight
-    puts "You have reserved an flight with this reservation code:"+ generate_reservation_code(reservation).to_s
+    puts "You have reserved this flight with the reservation code:"+ generate_reservation_code(reservation).to_s
     puts ""
-    puts "You have reserved a seat in the flight: " +flight.name+" of class: "+reservation.class_type+" departing from: "+flight.departure+" to Arrive at: "+flight.arrival
+    puts "You have reserved a seat in the flight: " +flight.name+" of class: "+reservation.class_type+" departing from: "+flight.departure+" and arriving at: "+flight.arrival
     puts ""
 
   end
 
   def get_customer_passport
-    puts "*******  Search a customer ********"
+   puts "************************************"
     puts "Please insert your passport number:"
-    passport = Integer(gets.chomp)
+    passport = gets.chomp.to_i
+    if (passport < 1) then
+      puts "Invalid passport number (value should > 0 )"
+      return get_customer_passport
+    else
+      return passport
+    end
+
   end
 
   def generate_reservation_code reservation
@@ -301,21 +314,21 @@ class Main
     puts "Please enter the Arrival city: "
     arrival_city = gets.chomp.downcase
     puts "Please enter the economic class capacity of the flight: "
-    economic_class_capacity = Integer(gets.chomp)
-    puts "Please enter the economic class price of the flight: "
-    economic_class_price = Integer(gets.chomp)
+    economic_class_capacity = gets.chomp.to_i
+    puts "Please enter the economic class price of the flight (in pounds): "
+    economic_class_price = gets.chomp.to_i
     puts "Please enter the business class capacity of the flight: "
-    business_class_capacity = Integer(gets.chomp)
-    puts "Please enter the business class price of the flight : "
-    business_class_price  = Integer(gets.chomp)
+    business_class_capacity = gets.chomp.to_i
+    puts "Please enter the business class price of the flight (in pounds): "
+    business_class_price  =  gets.chomp.to_i
     puts "Please enter the first class capacity of the airplane: "
-    first_class_capacity = Integer(gets.chomp)
-    puts "Please enter the first class price of the flight: "
-    first_class_price = Integer(gets.chomp)
+    first_class_capacity =  gets.chomp.to_i
+    puts "Please enter the first class price of the flight (in pounds): "
+    first_class_price =  gets.chomp.to_i
 
 
     puts "Please enter the duration of the flight: "
-    duration = Integer(gets.chomp)
+    duration =  gets.chomp.to_i
     puts "Please enter the departure time of the flight: "
     departure_time = Time.parse(gets.chomp)
     puts "Please enter the arrival time of the flight: "
@@ -343,11 +356,17 @@ class Main
         puts "Enter the name:"
         customer_name = gets.chomp
         puts "Enter the passport:"
-        customer_passport=Integer(gets.chomp)
+        customer_passport=gets.chomp.to_i
+        if (customer_passport < 1) then
+          puts "Invalid passport number ( value > 0 )"
+          return customer_registration
+        else
+          customer=Customer.new(@customer_manager.create__customer_id,customer_name.to_s,customer_passport)
+          @customer_manager.add_customer_xml(customer)
+          puts "Registration completed"
+        end
 
        # customer_object=Customer_manager.new
-        customer=Customer.new(@customer_manager.create__customer_id,customer_name.to_s,customer_passport)
-        @customer_manager.add_customer_xml(customer)
 
   end
 
@@ -381,13 +400,13 @@ class Main
          when 1 then flight.name = new_value
          when 2 then flight.departure = new_value
          when 3 then flight.arrival = new_value
-         when 4 then flight.first_class_capacity = Integer(new_value)
-         when 5 then flight.economic_class_capacity = Integer(new_value)
-         when 6 then flight.business_class_capacity = Integer(new_value)
-         when 7 then flight.economic_class_price = Integer(new_value)
-         when 8 then flight.first_class_price = Integer(new_value)
-         when 9 then flight.business_class_price = Integer(new_value)
-         when 10 then flight.duration = Integer(new_value)
+         when 4 then flight.first_class_capacity = new_value.to_i
+         when 5 then flight.economic_class_capacity = new_value.to_i
+         when 6 then flight.business_class_capacity = new_value.to_i
+         when 7 then flight.economic_class_price = new_value.to_i
+         when 8 then flight.first_class_price = new_value.to_i
+         when 9 then flight.business_class_price = new_value.to_i
+         when 10 then flight.duration = new_value.to_i
          when 11 then flight.departure_time = Time.parse(new_value)
          when 12 then flight.arrival_time = Time.parse(new_value)
          when 13 then break
@@ -418,7 +437,7 @@ class Main
     puts "***********************************************************"
     puts "13. Save your changes"
     puts "***********************************************************"
-    detail_no_chosen= Integer(gets.chomp)
+    detail_no_chosen=gets.chomp.to_i
     if (detail_no_chosen<1) or (detail_no_chosen>13)
       puts "!!!!!!!!!!!! Insert correct choice (between 1-13) !!!!!!!!!!!"
       puts "*******************************************"

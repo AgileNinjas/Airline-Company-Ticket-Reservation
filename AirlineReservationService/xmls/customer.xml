@@ -1,3 +1,9 @@
 <customer_details>
 
-<customer><id>1</id><name>shilan</name><passport>12345</passport></customer><customer><id>2</id><name>mircea</name><passport>2334</passport></customer></customer_details>
+<customer><id>1</id><name>shilan</name><passport>12345</passport></customer>
+<customer><id>2</id><name>mircea</name><passport>2334</passport></customer>
+<customer><id>3</id><name>godwin</name><passport>23444</passport></customer>
+<customer><id>4</id><name>anu</name><passport>12333</passport></customer>
+<customer><id>5</id><name>michael</name><passport>878</passport></customer>
+
+</customer_details>

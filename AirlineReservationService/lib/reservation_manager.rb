@@ -9,9 +9,7 @@ class ReservationManager
 
   def initialize
     @reservations = []
-    # refactor
-    puts "init reservation manager"
-   get_all_reservations()
+    get_all_reservations()
   end
 
   def create_reservation (customer, flight , class_type="economic" , code ="")
