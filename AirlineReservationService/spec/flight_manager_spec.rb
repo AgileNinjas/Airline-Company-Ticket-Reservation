@@ -20,10 +20,10 @@ describe "My behaviour" do
   end
 
   context "searching for flights" do
-     let(:flight1)  { Flight.new(1, "default1" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now, 100 ,200 ,20) }
+     let(:flight1)  { Flight.new(1, "default1" , "manchester" , "copenhagen", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now, 100 ,200 ,20) }
      let(:flight2)  { Flight.new(2, "default2" , "paris" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now, 100 ,200 ,20)  }
      let(:flight3)  { Flight.new(3, "default3" , "munich" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now, 100 ,200 ,20)  }
-     let(:flight4)  { Flight.new(4, "default4" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now, 100 ,200 ,20) }
+     let(:flight4)  { Flight.new(4, "default4" , "manchester" , "copenhagen", 100 ,200 ,20,1000,2000,3000 ,15,Time.now ,Time.now, 100 ,200 ,20) }
      let(:flight5)  { Flight.new(5, "default5" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,15,Time.parse("20-11-2011 23:00") ,Time.now, 100 ,200 ,20) }
 
     before do
@@ -40,7 +40,7 @@ describe "My behaviour" do
     end
 
     it "should return more than a flight id if there are more than one matches" do
-      query = Query.new("manchester","london",Time.now)
+      query = Query.new("manchester","copenhagen",Time.now)
       result = subject.search(query)
       if (result.length > 0)
         result.permutation.should include [flight1,flight4]
@@ -48,7 +48,7 @@ describe "My behaviour" do
     end
 
     it "should return flight1" do
-      query = Query.new("manchester","london",Time.now)
+      query = Query.new("manchester","copenhagen",Time.now)
       result = subject.search(query)
       result[0].should == flight4
     end

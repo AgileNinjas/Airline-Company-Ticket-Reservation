@@ -4,6 +4,7 @@ require "../lib/customer_manager.rb"
 require "../lib/customer.rb"
 
 
+
 describe "My behaviour" do
 
   subject {Customer_manager.new}
@@ -15,33 +16,27 @@ describe "My behaviour" do
 
 
   it "should have an add method to add all customers to customer array" do
-      customer=mock(Customer)
-      subject.add_customer(customer)
+       customer = Customer.new(6,"name6",478907)
+      subject.add_customer_xml(customer)
       subject.customers.should include(customer)
 
   end
 
-  it "should be able to add a new customer" do
-     subject = Customer_manager.new
-     customer = Customer.new(6,"name6",478907)
-     subject.add_customer(customer)
 
-  end
 
 
   context "search for customers" do
-    let(:customer1) {Customer.new(1,"Name1",54789)}
-    let(:customer2) {Customer.new(2,"Name2",78908)}
-
+    let(:index) {rand(10000)}
+    let(:customer3) {Customer.new(3,"Name3",index)}
     before do
-      subject.add_customer(customer1)
+      subject.add_customer_xml(customer3)
     end
 
 
 
 
   it "should contain a search method and return a customer object" do
-   subject.get_customer_by_passport_number(54789).should==customer1
+   subject.get_customer_by_passport_number(index).should==customer3
 
   end
 

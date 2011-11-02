@@ -6,9 +6,9 @@ describe "Reservation Manager" do
   subject {ReservationManager.new}
 
    let(:customer) {mock('Customer')}
-   let(:flight) {mock('Flight', :search_available_seats => true, :update_available_seats => true)}
-   let(:full_flight) {mock ('Flight', :search_available_seats => false, :update_available_seats => true)}
-   let(:flight11)  { Flight.new(1, "default1" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now) }
+   let(:flight) {Flight.new(2, "default2" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now,100 ,200 ,20) }
+   let(:full_flight) {Flight.new(3, "default3" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now,0 ,0 ,0)}
+   let(:flight11)  { Flight.new(1, "default1" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now,100 ,200 ,20) }
 
   it "should have a method named create_reservation that return reservation object" do
      subject.create_reservation(customer,flight).should be_an_instance_of(Reservation)
@@ -43,10 +43,6 @@ describe "Reservation Manager" do
     subject.get_reservation("a code").should == nil
   end
 
-  it "should have an method named get_all_reservations that adds reservations to the array" do
-    subject.get_all_reservations
-    subject.reservations.length.should == 3
-  end
 
 
 end
