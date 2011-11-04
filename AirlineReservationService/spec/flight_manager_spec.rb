@@ -5,13 +5,9 @@ require "../lib/query.rb"
 require "../lib/flight.rb"
 
 
-describe "My behaviour" do
+describe "Flight_manager" do
 
   subject {Flight_manager.new}
-
-  it "should have an array of flight named flights" do
-      subject.flights.should be_an_instance_of(Array)
-   end
 
   it "should have an add method which will add flight objects to flights array"  do
       flight=mock(Flight)
@@ -42,21 +38,7 @@ describe "My behaviour" do
     it "should return more than a flight id if there are more than one matches" do
       query = Query.new("manchester","copenhagen",Time.now)
       result = subject.search(query)
-      if (result.length > 0)
-        result.permutation.should include [flight1,flight4]
-      end
-    end
-
-    it "should return flight1" do
-      query = Query.new("manchester","copenhagen",Time.now)
-      result = subject.search(query)
-      result[0].should == flight4
-    end
-
-
-    it "should return flight5 when search date is 20-11-2011 23:00 " do
-       query = Query.new("manchester","london",Time.parse("20-11-2011 23:00"))
-       subject.search(query).should include flight5
+      result.permutation.should include [flight1,flight4]
     end
 
     it "should return flight id 1 if the departure city is london and arrival is manchester" do
@@ -65,10 +47,6 @@ describe "My behaviour" do
     end
 
   end
-
-  #it "should have 10 flight ids" do
-  #   subject.flights.length.should == 10
-  #end
 
    it "should be able to add new flight"do
       my_subject  =Flight_manager.new

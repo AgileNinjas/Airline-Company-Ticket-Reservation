@@ -10,18 +10,11 @@ describe "Reservation Manager" do
    let(:full_flight) {Flight.new(3, "default3" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now,0 ,0 ,0)}
    let(:flight11)  { Flight.new(1, "default1" , "manchester" , "london", 100 ,200 ,20,1000,2000,3000 ,16,Time.now ,Time.now,100 ,200 ,20) }
 
-  it "should have a method named create_reservation that return reservation object" do
-     subject.create_reservation(customer,flight).should be_an_instance_of(Reservation)
-  end
-
-   it "should have array Reservation that keeps all the reservations" do
-     subject.reservations.should be_an_instance_of(Array)
-   end
 
     it "should add the reservation in the array once it is created" do
-     no_of_reservations = subject.reservations.length
-     subject.create_reservation(customer, flight)
-     subject.reservations.length.should == no_of_reservations+1
+      no_of_reservations = subject.reservations.length
+      subject.create_reservation(customer, flight)
+      subject.reservations.length.should == no_of_reservations+1
     end
 
     it "should return nil if there is no available seats in the flight" do
@@ -33,20 +26,14 @@ describe "Reservation Manager" do
       subject.create_reservation(customer,flight)
     end
 
-  it "should have a method get_reservation that returns an reservation when it is supplied with a confirmation code" do
-    reservation = subject.create_reservation(customer,flight)
-    subject.get_reservation(reservation.confirmation_code).should == reservation
-  end
+    it "should have a method get_reservation that returns an reservation when it is supplied with a confirmation code" do
+      reservation = subject.create_reservation(customer,flight)
+      subject.get_reservation(reservation.confirmation_code).should == reservation
+    end
 
-  it " get_reservation should return nil if the confirmation code doesnt exist" do
-    reservation = subject.create_reservation(customer,flight)
-    subject.get_reservation("a code").should == nil
-  end
-
-
+    it " get_reservation should return nil if the confirmation code doesnt exist" do
+      reservation = subject.create_reservation(customer,flight)
+      subject.get_reservation("a code").should == nil
+    end
 
 end
-
-
-  #customer.stub!(:id).and_return('customer_id')
-  #  subject.customer.should == customer

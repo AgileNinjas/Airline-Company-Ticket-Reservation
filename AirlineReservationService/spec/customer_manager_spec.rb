@@ -1,28 +1,18 @@
 require "rspec"
-require "rspec"
 require "../lib/customer_manager.rb"
 require "../lib/customer.rb"
 
 
-
-describe "My behaviour" do
+describe "Customer_manager" do
 
   subject {Customer_manager.new}
 
-  it "should have an array of customers" do
-      subject.customers.should be_an_instance_of(Array)
-
-  end
-
-
   it "should have an add method to add all customers to customer array" do
-       customer = Customer.new(6,"name6",478907)
+      customer = Customer.new(6,"name6",478907)
       subject.add_customer_xml(customer)
       subject.customers.should include(customer)
 
   end
-
-
 
 
   context "search for customers" do
@@ -40,9 +30,6 @@ describe "My behaviour" do
 
   end
 
-    #it "should return customer1 when passport number is 54789" do
-    #   subject.search_customer(54789)==[customer1]
-    #end
+end
 
-  end
-  end
+end

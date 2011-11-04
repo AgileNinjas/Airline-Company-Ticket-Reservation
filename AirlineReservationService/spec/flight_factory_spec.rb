@@ -2,13 +2,9 @@ require "rspec"
 require "../lib/flight_factory"
 require "../lib/flight"
 
-describe FlightFactory do
+describe "Flight_factory" do
 
   subject {FlightFactory.new}
-
-  it "FlightFactory should have new_flight that returns a Flight" do
-     subject.get_flight(3).should be_an_instance_of(Flight)
-  end
 
   it "should read the default name" do
      subject.get_flight(3).name.should =="madrid to lisbon"
@@ -37,4 +33,5 @@ describe FlightFactory do
   it "should have an arrival time" do
     subject.get_flight(3).arrival_time.should == Time.utc(2011,11,12,12)
   end
+
 end
