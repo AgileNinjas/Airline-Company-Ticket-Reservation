@@ -31,7 +31,7 @@ describe "Reservation Manager" do
       subject.get_reservation(reservation.confirmation_code).should == reservation
     end
 
-    it " get_reservation should return nil if the confirmation code doesnt exist" do
+    it " get_reservation should return nil if the confirmation code doesn't exist" do
       reservation = subject.create_reservation(customer,flight)
       subject.get_reservation("a code").should == nil
     end

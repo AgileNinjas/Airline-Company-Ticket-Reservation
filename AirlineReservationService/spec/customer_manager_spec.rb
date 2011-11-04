@@ -23,8 +23,6 @@ describe "Customer_manager" do
     end
 
 
-
-
   it "should contain a search method and return a customer object" do
    subject.get_customer_by_passport_number(index).should==customer3
 
